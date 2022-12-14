@@ -1,12 +1,15 @@
 
+@use "../../../styles/theme.scss";
+@use "../../../styles/font.scss";
+
 .start {
 
-    width: 164px;
+    width: 156px;
     height: 56px;
     
     /* Accent/Strong Blue */
     
-    background: #554AF0;
+    background: theme.$blue-app;
     border-radius: 12px;
     border: 0px;
 }
@@ -18,13 +21,13 @@
     
     /* Background / Extra White */
     
-    background: #F8F8FA;
+    background: theme.$white-app;
     border-radius: 12px;
     border: 0px;
 }
 
 .start > p {
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -35,11 +38,11 @@
     
     /* Background / White */
     
-    color: #FFFFFF;
+    color: theme.$pure-white;
 }
 
 .join > p {
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -50,5 +53,5 @@
     
     /* Accent/Strong Blue */
     
-    color: #554AF0;
+    color: theme.$blue-app;
 }
