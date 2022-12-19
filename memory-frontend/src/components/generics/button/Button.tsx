@@ -1,12 +1,13 @@
 import React from "react";
-import "./button.css"
+import StyledButton from "./StyledButton";
+import StyledParagraph from "../paragraphs/StyledParagraph";
 
-export default function  Button(props : any){
+export function Button(props : any){
     return (
         <div>
-            <button className={props.className} onClick = {props.function}>
-                <p>{props.text}</p>
-            </button>
+            <StyledButton start = {props.start} join = {props.join}>
+                <StyledParagraph start = {props.start} join = {props.join}>{props.text}</StyledParagraph>
+            </StyledButton>
         </div>
 
     );

@@ -14,18 +14,10 @@ export default [
     },
     {
         id: 3,
-        text: "start",
-    },
-    {
-        id: 4,
         text: "Start a game",
     },
     {
-        id: 5,
-        text: "join",
-    },
-    {
-        id: 6,
+        id: 4,
         text: "Join a game",
     }
 ]

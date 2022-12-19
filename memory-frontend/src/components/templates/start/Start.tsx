@@ -1,39 +1,42 @@
 import React from "react";
-import Button from "../../generics/button/Button";
-import "./start.css"
+import {Button} from "../../generics/button/Button";
+import StyledParagraph from "../../generics/paragraphs/StyledParagraph";
+import { Title } from "../../generics/titles/StyledTitle";
+import { DolphinImage, StartFooter, StartPage } from "./StyledStart";
 
 export default function Start(props: any) {
     return (
-        <div className="start--page">
-
+        <StartPage>
             <div>
-                <div className="dolphin--image">
+                <DolphinImage>
                     <img src={props.dataImages[0].img} alt="dolphin" />
+                </DolphinImage>
+
+                <div>
+                    <Title start={true}>{props.dataStart[0].text}</Title>
                 </div>
 
-                <div className="game--title">
-                    <h2>{props.dataStart[0].text}</h2>
-                </div>
+                <StyledParagraph startParagraph>{props.dataStart[1].text}</StyledParagraph>
 
-                <p>{props.dataStart[1].text}</p>
-
-                <p>{props.dataStart[2].text}</p>
+                <StyledParagraph startParagraph>{props.dataStart[2].text}</StyledParagraph>
             </div>
 
 
 
 
-            <footer>
+            <StartFooter>
                 <Button
-                    className={props.dataStart[3].text}
+                    start={true}
+                    join={false}
+                    text={props.dataStart[3].text}
+                />
+                <Button
+                    start={false}
+                    join={true}
                     text={props.dataStart[4].text}
                 />
-                <Button
-                    className={props.dataStart[5].text}
-                    text={props.dataStart[6].text}
-                />
-            </footer>
+            </StartFooter>
 
-        </div>
+        </StartPage>
     );
 }
