@@ -40,6 +40,17 @@ export default [
     {
         id: 9,
         text: "Start",
+    },
+    {
+        id: 10,
+        array: [2,3,4]
+    },
+    {
+        id: 11,
+        array: ["Public","Private"]
+    },
+    {
+        id: 12,
+        array: ["8 (Easy)","16 (Medium)", "24 (Hard)"]
     }
-
 ]

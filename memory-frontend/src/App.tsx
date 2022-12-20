@@ -10,15 +10,14 @@ function App() {
   return (
     <div>
         <Background />
-        <Start 
+        {/* <Start 
           dataImages = {dataImages}
           dataStart = {dataStart}
-        />
-        {/* <NewGame
+        /> */}
+        <NewGame
           dataNewGame = {dataNewGame}
           dataImages = {dataImages}
-        /> */}
-
+        />
     </div>
   );
 }

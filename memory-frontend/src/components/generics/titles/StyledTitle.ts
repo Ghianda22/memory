@@ -16,4 +16,9 @@ width: 328px;
 height: 76px;
 `
 }
+${props => props.newGame && css`
+padding-left: 2px;
+padding-bottom: 28px;
+`
+}
 `
