@@ -4,6 +4,10 @@ import StyledParagraph from "../../generics/paragraphs/StyledParagraph";
 import { Title } from "../../generics/titles/StyledTitle";
 import { DolphinImage, StartFooter, StartPage } from "./StyledStart";
 
+interface StartProps {
+    
+}
+
 export default function Start(props: any) {
     return (
         <StartPage>

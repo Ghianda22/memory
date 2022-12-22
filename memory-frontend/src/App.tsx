@@ -6,18 +6,19 @@ import dataStart from './data/dataStart';
 import dataNewGame from './data/dataNewGame';
 import NewGame from './components/templates/newgame/NewGame';
 
+
 function App() {
   return (
     <div>
         <Background />
-        {/* <Start 
+        <Start 
           dataImages = {dataImages}
           dataStart = {dataStart}
-        /> */}
-        <NewGame
+        />
+        {/* <NewGame
           dataNewGame = {dataNewGame}
           dataImages = {dataImages}
-        />
+        /> */}
     </div>
   );
 }

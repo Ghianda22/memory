@@ -19,5 +19,13 @@ export default [
     {
         id: 4,
         text: "Join a game",
+    },
+    {
+        id: 5,
+        text: "join",
+    },
+    {
+        id: 6,
+        text: "",
     }
 ]

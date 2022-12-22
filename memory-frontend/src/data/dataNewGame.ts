@@ -43,14 +43,50 @@ export default [
     },
     {
         id: 10,
-        array: [2,3,4]
+        array: [
+        {
+            id: 0,
+            data: 2,
+        },
+        {
+            id: 1,
+            data: 3,
+        },
+        {
+            id: 2,
+            data: 4,
+        }
+        ],
     },
     {
         id: 11,
-        array: ["Public","Private"]
+        array: [
+            {
+                id: 0,
+                data: "Public",
+            },
+            {
+                id: 1,
+                data: "Private",
+            }
+
+        ],
     },
     {
         id: 12,
-        array: ["8 (Easy)","16 (Medium)", "24 (Hard)"]
+        array: [
+            {
+                id: 0,
+                data: "8 (Easy)",
+            },
+            {
+                id: 1,
+                data: "16 (Medium)",
+            },
+            {
+                id: 2,
+                data: "24 (Large)",
+            }
+        ],
     }
 ]

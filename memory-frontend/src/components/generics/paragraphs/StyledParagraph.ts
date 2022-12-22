@@ -23,7 +23,7 @@ export default styled.p<{ start?: boolean, join?: boolean, startParagraph?: bool
         padding: 5px;
     `}
     ${props => props.newGame && css`
-        padding: 2px;
+        padding-left: 2px;
         color: #36354A;
         text-align: left;
         margin-bottom: 15px;
