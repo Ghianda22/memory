@@ -4,7 +4,7 @@ const theme = {
 		accentBlue80: "#776EF3",
 		white: "#FFFFFF",
 		almostWhite: "#F8F8FA",
-		accentActive: "#2113E8",
+		normalActive: "#2113E8",
 		secondaryActive: "#E2E3E4",
 		selector: "rgba(118, 118, 128, 0.12)",
 		separator: "rgba(60, 60, 67, 0.36);",

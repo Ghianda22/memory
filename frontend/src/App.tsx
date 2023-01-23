@@ -1,6 +1,9 @@
 import React from "react";
 
 import styled, { ThemeProvider } from "styled-components";
+import Button from "./components/generics/Button";
+import Title from "./components/generics/Title";
+import UserIcon from "./components/generics/UserIcon";
 import theme from "./styles/theme";
 
 const StyledApp = styled.div`
@@ -18,8 +21,11 @@ function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<StyledApp>
+				<Title/>
 				<div>components</div>
+				<Button/>
 				<div>components</div>
+				<UserIcon/>
 			</StyledApp>
 		</ThemeProvider>
 	);
