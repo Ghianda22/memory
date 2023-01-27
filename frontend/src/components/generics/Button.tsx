@@ -7,7 +7,6 @@ const StyledButton = styled.button<{ buttonStyle: string }>`
 	border-radius: 12px;
 	border: none;
 	text-align: center;
-
 	${(props) =>
 		props.buttonStyle === "normal" &&
 		css`
@@ -40,13 +39,19 @@ const StyledButton = styled.button<{ buttonStyle: string }>`
 				background-color: ${props.theme.colors.almostWhite};
 			}
 		`}
+	${(props) =>
+		props.buttonStyle === "negative" &&
+		css`
+			background-color: ${props.theme.colors.white};
+			color: ${props.theme.colors.accentBlue100};
+			:active {
+				background-color: ${props.theme.colors.secondaryActive};
+			}
+			border: 1px solid ${props.theme.colors.accentBlue100};
+			font-weight: 600;
+		`}
 `;
 
-
 export default function Button() {
-  return (
-    <StyledButton buttonStyle="normal">
-      CLICK
-    </StyledButton>
-  )
+	return <StyledButton buttonStyle="normal">CLICK</StyledButton>;
 }

@@ -14,6 +14,7 @@ const StyledApp = styled.div`
 
 	font-family: "Poppins";
 	font-style: normal;
+	line-height: 24px;
 	background-color: ${(props) => props.theme.colors.white};
 `;
 
