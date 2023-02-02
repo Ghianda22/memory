@@ -1,16 +1,18 @@
 import React from "react";
 
 import styled, { ThemeProvider } from "styled-components";
-import Button from "./components/generics/Button";
+import Button from "./components/generics/Button/Button";
 import Title from "./components/generics/Title";
 import UserIcon from "./components/generics/UserIcon";
+import SelectionBar from "./components/SelectionBar";
 import theme from "./styles/theme";
 
 const StyledApp = styled.div`
-	width: 100%;
 	display: flex;
+	width: auto;
 	flex-direction: column;
 	align-items: center;
+	padding: 32px 24px;
 
 	font-family: "Poppins";
 	font-style: normal;
@@ -22,11 +24,12 @@ function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<StyledApp>
-				<Title/>
+				<Title />
 				<div>components</div>
-				<Button/>
+				<Button />
 				<div>components</div>
-				<UserIcon/>
+				<UserIcon />
+				<SelectionBar />
 			</StyledApp>
 		</ThemeProvider>
 	);
