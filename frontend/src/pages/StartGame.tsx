@@ -1,7 +1,13 @@
-import React from 'react'
+import React from 'react';
+import StartGameTemplate from '../components/templates/StartGameTemplate';
+import { data } from '../data/start';
+
+export const StartGameContext = React.createContext(data);
 
 export default function StartGame() {
   return (
-    <div>StartGame</div>
+    <StartGameContext.Provider value={data}>
+      <StartGameTemplate />
+    </StartGameContext.Provider>
   )
 }

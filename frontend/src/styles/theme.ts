@@ -12,7 +12,7 @@ const theme = {
 		outlineSecondary: "#D2D2D7",
 	},
 	text: {
-		color: {
+		colors: {
 			dark100: "#04021D",
 			dark80: "#36354A",
 			dark60: "#686777",
