@@ -48,6 +48,7 @@ const ButtonsContainer = styled.div`
 	display: flex;
 	flex-direction: row;
     justify-content: space-between;
+    gap: 8px;
 `;
 
 
