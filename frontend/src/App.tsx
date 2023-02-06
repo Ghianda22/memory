@@ -5,6 +5,7 @@ import Button from "./components/generics/Button/Button";
 import Title from "./components/generics/Title";
 import UserIcon from "./components/generics/UserIcon";
 import SelectionBar from "./components/SelectionBar";
+import StartGame from "./pages/StartGame";
 import theme from "./styles/theme";
 
 const StyledApp = styled.div`
@@ -24,12 +25,13 @@ function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<StyledApp>
-				<Title />
+				{/* <Title />
 				<div>components</div>
 				<Button />
 				<div>components</div>
 				<UserIcon />
-				<SelectionBar />
+				<SelectionBar /> */}
+				<StartGame/>
 			</StyledApp>
 		</ThemeProvider>
 	);
