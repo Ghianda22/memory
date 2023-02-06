@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components";
 
 const StyledButton = styled.button<{ buttonStyle: string }>`
+	font-weight: 500;
+	font-size: 16px;
 	width: 100%;
 	padding: 16px;
 	border-radius: 12px;
@@ -50,6 +52,5 @@ const StyledButton = styled.button<{ buttonStyle: string }>`
 			font-weight: 600;
 		`}
 `;
-
 
 export default StyledButton;
