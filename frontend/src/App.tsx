@@ -7,7 +7,7 @@ import theme from "./styles/theme";
 
 const StyledApp = styled.div`
 	display: flex;
-	width: auto;
+	
 	height: 100vh;
 	flex-direction: column;
 	align-items: center;
