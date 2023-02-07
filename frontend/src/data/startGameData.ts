@@ -12,5 +12,5 @@ export const data = {
 	buttons: {
 		button1: "Start a game",
 		button2: "Join a game",
-	},
+	}
 };

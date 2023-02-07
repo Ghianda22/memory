@@ -1,6 +1,6 @@
 import React from 'react';
 import StartGameTemplate from '../components/templates/StartGameTemplate';
-import { data } from '../data/start';
+import { data } from '../data/startGameData';
 
 export const StartGameContext = React.createContext(data);
 
