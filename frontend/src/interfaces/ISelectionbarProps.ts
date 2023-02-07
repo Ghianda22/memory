@@ -1,7 +1,7 @@
 export default interface ISelectionBarProps {
-	selectionBar: ISelectionBarData;
-	selectedOption: string;
-	setOption: (optionValue: string) => void;
+	selectionBar: ISelectionBarData,
+	selectedOption: string,
+	setOption: (optionValue: string) => void
 }
 
 interface ISelectionBarData {
