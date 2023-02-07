@@ -3,10 +3,11 @@ import styled from "styled-components";
 import { StartGameContext } from "../../pages/StartGame";
 import Button from "../generics/Button/Button";
 import Title from "../generics/Title";
+import { useNavigate } from "react-router-dom";
 
 const FullPage = styled.div`
 	display: flex;
-    height: 100%;
+	height: 100%;
 	flex-direction: column;
 	justify-content: space-between;
 `;
@@ -47,14 +48,13 @@ const StartTitle = styled(Title)`
 const ButtonsContainer = styled.div`
 	display: flex;
 	flex-direction: row;
-    justify-content: space-between;
-    gap: 8px;
+	justify-content: space-between;
+	gap: 8px;
 `;
-
-
 
 export default function StartGameTemplate() {
 	const context = useContext(StartGameContext);
+	const navigate = useNavigate();
 	return (
 		<FullPage>
 			<div>
@@ -68,10 +68,15 @@ export default function StartGameTemplate() {
 			</div>
 
 			<ButtonsContainer>
-				<Button buttonStyle="normal" text={context.buttons.button1} />
+				<Button
+					buttonStyle="normal"
+					text={context.buttons.button1}
+					onClickHandler={() => navigate("/newgame")}
+				/>
 				<Button
 					buttonStyle="secondary"
 					text={context.buttons.button2}
+					onClickHandler={() => navigate("/activegames")}
 				/>
 			</ButtonsContainer>
 		</FullPage>
