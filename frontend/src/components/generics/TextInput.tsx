@@ -9,20 +9,21 @@ const InputContainer = styled.div`
     padding: 16;
     gap: 16px;
 
-	padding: 16px 20px;
+	padding: 12px 14px;
 	border: 0.5px solid #e2e3e4;
 	border-radius: 12px;
-
-	font-weight: 600;
-	font-size: 16px;
-	color: ${(props) => props.theme.text.colors.dark60};
 `;
 
 const InputIcon = styled.img`
     flex: 3;
+	width: 37px;
+	
 `;
 const TextField = styled.input`
-    border: none;
+	border: none;
+	font-weight: 500;
+	font-size: 16px;
+	color: ${(props) => props.theme.text.colors.dark60};
 `;
 
 export default function TextInput(props: ITextInputProps) {
