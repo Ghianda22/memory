@@ -20,7 +20,6 @@ const SelectionBarContainer = styled.div<{ areImages: boolean }>`
 			gap: 48px;
 			justify-content: left;
 			padding: 0px 11px;
-
 		`}
 
 	background-color: ${(props) =>
@@ -64,12 +63,11 @@ const Separator = styled.div`
 `;
 
 // --- IMAGES SELECTION ---------------------------------------------------------------------------------
-const SelectionImageContainer = styled.div``;
 //TODO: set a responsive width
-const ImageContainer = styled.div`
+const ImageContainer = styled(OptionContainer)<{ selected: boolean }>`
 	width: 64px;
+	padding: 3px;
 `;
-const ImageOption = styled.img``;
 
 export default function SelectionBar(props: ISelectionBarProps) {
 	// state?
@@ -81,7 +79,10 @@ export default function SelectionBar(props: ISelectionBarProps) {
 		if (areImages) {
 			return (
 				<>
-					<ImageContainer>
+					<ImageContainer
+						selected={isSelected}
+						onClick={() => setOption(option)}
+					>
 						<img src={option} alt={option.substring(12)} />
 					</ImageContainer>
 				</>
@@ -103,32 +104,18 @@ export default function SelectionBar(props: ISelectionBarProps) {
 			);
 		}
 
-		// separator just if 2 consequentely not selected
-		// const next = options[i + 1];
-		// const nextNotSelected = next != null && next !== selectedOption;
-		// return (
-		// 	<>
-		// 		<OptionContainer
-		// 			selected={isSelected}
-		// 			onClick={() => setOption(option)}
-		// 		>
-		// 			{areImages
-		// 				? <img src={option} alt={option.substring(12)} />
-		// 				: <OptionText>{option}</OptionText>
-		// 			}
-		// 		</OptionContainer>
-		// 		{!isSelected && nextNotSelected && <Separator />}
-		// 	</>
-		// );
 	});
 
 	return (
 		<div>
 			<LabelText>{label}</LabelText>
-			{/* {areImages 
-				? 
-				: <SelectionBarContainer>{renderedOptions}</SelectionBarContainer>
-			} */}
+			{/* {areImages ? (
+				<SelectionImageContainer>
+					{renderedOptions}
+				</SelectionImageContainer>
+			) : (
+				<SelectionBarContainer>{renderedOptions}</SelectionBarContainer>
+			)} */}
 			<SelectionBarContainer areImages={areImages}>
 				{renderedOptions}
 			</SelectionBarContainer>
