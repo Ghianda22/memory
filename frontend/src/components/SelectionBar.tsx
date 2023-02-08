@@ -46,7 +46,6 @@ const OptionText = styled.p`
 	line-height: 20px;
 `;
 
-// TODO: fix separator height
 const Separator = styled.div`
 box-sizing: border-box;
   height: 55%;
@@ -56,14 +55,25 @@ box-sizing: border-box;
 `;
 
 export default function SelectionBar(props: ISelectionBarProps) {
+	// state? 
 	const { label, options } = props.selectionBar;
 	const { selectedOption, setOption } = props;
 
-	const renderedOptions = options.map((option) => {
+	const renderedOptions = options.map((option, i) => {
+		// sepa just if 2 consequentely not selected
+		const isSelected = option === selectedOption;
+		const next = options[i + 1];
+		const nextNotSelected = next != null && next !== selectedOption;
 		return (
-			<OptionContainer selected={option === selectedOption} onClick = {() => setOption(option)}>
-				<OptionText>{option}</OptionText>
-			</OptionContainer>
+			<>
+				<OptionContainer
+					selected={isSelected}
+					onClick={() => setOption(option)}
+				>
+					<OptionText>{option}</OptionText>
+				</OptionContainer>
+				{!isSelected && nextNotSelected && <Separator />}
+			</>
 		);
 	});
 
