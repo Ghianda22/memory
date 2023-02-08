@@ -57,7 +57,8 @@ const SelectionImageContainer = styled(SelectionBarContainer)`
 	justify-content: left;
 	padding: 0px 11px;
 	background: none;
-`;
+	`;
+	// overflow-x: scroll
 //TODO: set a responsive width
 const ImageContainer = styled(OptionContainer)<{ selected: boolean }>`
 	width: 64px;

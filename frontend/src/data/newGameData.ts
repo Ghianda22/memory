@@ -44,5 +44,5 @@ export const data = {
 		label: "Choose an image for your game",
 		placeholder: "Browse image...",
 	},
-	button: "Start",
+	button: "Start"
 };

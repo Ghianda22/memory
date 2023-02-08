@@ -5,6 +5,7 @@ import { images } from "../../data/imagesData";
 import { NewGameContext } from "../../pages/NewGame";
 import Button from "../generics/Button/Button";
 import LabelText from "../generics/LabelText";
+import Modal from "../generics/Modal";
 import TextInput from "../generics/TextInput";
 import Title from "../generics/Title";
 import SelectionBar from "../SelectionBar";
@@ -35,11 +36,7 @@ export default function NewGameTemplate() {
 	const [difficulty, setDifficulty] = useState<string>(context.selectionBar[2].options[0]);
 	const [avatar, setAvatar] = useState<string>("");
 	const [gameImage, setGameImage] = useState<string>(images.background[0]);
-	const [showGameImageModal, setshowGameImageModal] = useState<boolean>(false);
-
-	 const browseGameImages = () => {
-			setshowGameImageModal(!showGameImageModal);
-		}
+	const [modalIsVisible, setModalIsVisible] = useState<boolean>(false);
 
 	const changeNumberOfPlayers = (numOption: string) => {
 		setNumberOfPlayers(numOption);
@@ -53,9 +50,16 @@ export default function NewGameTemplate() {
 	const handleChangeName = (event: any) => {
 		setGameName(event.target.value);
 	};
-	const selectAvatar = (imageAddress: string) => {
-		setAvatar(imageAddress);
+	const selectAvatar = (image: string) => {
+		setAvatar(image);
 	};
+
+	const toggleModal = () => {
+		setModalIsVisible(!modalIsVisible);
+	}
+	const selectGameImage = (image: string) => {
+		setGameImage(image);
+	}
 
 	const navigateToNextPage = () => {
 		// if(mode === context.selectionBar[1].options[0])
@@ -103,17 +107,24 @@ export default function NewGameTemplate() {
 			</div>
 
 			{/* Browse Image modal */}
-			{/* <div>
+			<div>
 				<LabelText>{context.gameImage.label}</LabelText>
 				<Button
 					buttonStyle={"secondary"}
 					text={context.gameImage.placeholder}
-					onClickHandler={browseGameImages}
+					onClickHandler={toggleModal}
 				/>
 			</div>
-			{ showGameImageModal && (
-				
-			)} */}
+			{modalIsVisible && (
+				<Modal closeModal={toggleModal}>
+					<SelectionBar
+						selectionBar={{label: context.gameImage.label, options: images.background}}
+						selectedOption={gameImage}
+						setOption={selectGameImage}
+						areImages={true}
+					/>
+				</Modal>
+			)}
 
 			<Button
 				buttonStyle={"normal"}
