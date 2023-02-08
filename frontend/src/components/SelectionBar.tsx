@@ -4,7 +4,7 @@ import ISelectionBarProps from "../interfaces/ISelectionbarProps";
 import LabelText from "./generics/LabelText";
 
 // --- TEXT SELECTION ---------------------------------------------------------------------------------
-const SelectionBarContainer = styled.div<{ areImages: boolean }>`
+const SelectionBarContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -14,18 +14,31 @@ const SelectionBarContainer = styled.div<{ areImages: boolean }>`
 
 	height: fit-content;
 	padding: 2px;
-	${(props) =>
-		props.areImages &&
-		css`
-			gap: 48px;
-			justify-content: left;
-			padding: 0px 11px;
-		`}
-
-	background-color: ${(props) =>
-		props.areImages ? "none" : props.theme.colors.selector};
+	background-color: ${(props) =>props.theme.colors.selector};
 	border-radius: 8px;
 `;
+// const SelectionBarContainer = styled.div<{ areImages: boolean }>`
+// 	display: flex;
+// 	flex-direction: row;
+// 	justify-content: center;
+// 	align-items: center;
+// 	text-align: center;
+// 	letter-spacing: -0.08px;
+
+// 	height: fit-content;
+// 	padding: 2px;
+// 	${(props) =>
+// 		props.areImages &&
+// 		css`
+// 			gap: 48px;
+// 			justify-content: left;
+// 			padding: 0px 11px;
+// 		`}
+
+// 	background-color: ${(props) =>
+// 		props.areImages ? "none" : props.theme.colors.selector};
+// 	border-radius: 8px;
+// `;
 
 const OptionContainer = styled.div<{ selected?: boolean }>`
 	padding: 6px 8px;
@@ -55,6 +68,7 @@ const OptionText = styled.p`
 	line-height: 20px;
 `;
 
+//TODO: fix again this damn separator height
 const Separator = styled.div`
   height: 55%;
   width: 0;
@@ -63,6 +77,13 @@ const Separator = styled.div`
 `;
 
 // --- IMAGES SELECTION ---------------------------------------------------------------------------------
+const SelectionImageContainer = styled(SelectionBarContainer)`
+	gap: 48px;
+	justify-content: left;
+	padding: 0px 11px;
+	background: none;
+`;
+
 //TODO: set a responsive width
 const ImageContainer = styled(OptionContainer)<{ selected: boolean }>`
 	width: 64px;
@@ -109,16 +130,16 @@ export default function SelectionBar(props: ISelectionBarProps) {
 	return (
 		<div>
 			<LabelText>{label}</LabelText>
-			{/* {areImages ? (
+			{areImages ? (
 				<SelectionImageContainer>
 					{renderedOptions}
 				</SelectionImageContainer>
 			) : (
 				<SelectionBarContainer>{renderedOptions}</SelectionBarContainer>
-			)} */}
-			<SelectionBarContainer areImages={areImages}>
+			)}
+			{/* <SelectionBarContainer areImages={areImages}>
 				{renderedOptions}
-			</SelectionBarContainer>
+			</SelectionBarContainer> */}
 		</div>
 	);
 }
