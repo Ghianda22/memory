@@ -1,8 +1,9 @@
 export const data = {
+	title: "New game",
 	selectionBar: [
 		{
 			label: "Number of participants",
-			options: ["2", "3", "4"]
+			options: ["2", "3", "4"],
 		},
 		{
 			label: "Game mode",
@@ -12,6 +13,14 @@ export const data = {
 			label: "Number of cards (difficulty)",
 			options: ["8 (easy)", "16 (medium)", "24 (hard)"],
 		},
+		{
+			label: "Choose your avatar",
+			options: [
+				"images/icons/lion-icon.png",
+				"images/icons/dog-icon.png",
+				"images/icons/tophat-icon.png",
+			]
+		}
 	],
 	// selectionBar: {
 	// 	numOfPlayersSelectionBar: {
@@ -27,14 +36,6 @@ export const data = {
 	// 		options: ["8 (easy)", "16 (medium)", "24 (hard)"],
 	// 	},
 	// },
-	avatar: {
-		label: "Choose your avatar",
-		options: [
-			"images/icons/lion-icon.png",
-			"images/icons/dog-icon.png",
-			"images/icons/tophat-icon.png",
-		],
-	},
 	gameName: {
 		label: "Name your game",
 		placeholder: "Game name",

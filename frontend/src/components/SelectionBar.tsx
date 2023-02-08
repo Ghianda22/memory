@@ -3,7 +3,8 @@ import styled, { css } from "styled-components";
 import ISelectionBarProps from "../interfaces/ISelectionbarProps";
 import LabelText from "./generics/LabelText";
 
-const SelectionBarContainer = styled.div`
+// --- TEXT SELECTION ---------------------------------------------------------------------------------
+const SelectionBarContainer = styled.div<{ areImages: boolean }>`
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -13,8 +14,17 @@ const SelectionBarContainer = styled.div`
 
 	height: fit-content;
 	padding: 2px;
+	${(props) =>
+		props.areImages &&
+		css`
+			gap: 48px;
+			justify-content: left;
+			padding: 0px 11px;
 
-	background-color: ${(props) => props.theme.colors.selector};
+		`}
+
+	background-color: ${(props) =>
+		props.areImages ? "none" : props.theme.colors.selector};
 	border-radius: 8px;
 `;
 
@@ -53,33 +63,75 @@ const Separator = styled.div`
   border-radius: 0.5px;
 `;
 
+// --- IMAGES SELECTION ---------------------------------------------------------------------------------
+const SelectionImageContainer = styled.div``;
+//TODO: set a responsive width
+const ImageContainer = styled.div`
+	width: 64px;
+`;
+const ImageOption = styled.img``;
+
 export default function SelectionBar(props: ISelectionBarProps) {
-	// state? 
+	// state?
 	const { label, options } = props.selectionBar;
-	const { selectedOption, setOption } = props;
+	const { areImages, selectedOption, setOption } = props;
 
 	const renderedOptions = options.map((option, i) => {
-		// sepa just if 2 consequentely not selected
 		const isSelected = option === selectedOption;
-		const next = options[i + 1];
-		const nextNotSelected = next != null && next !== selectedOption;
-		return (
-			<>
-				<OptionContainer
-					selected={isSelected}
-					onClick={() => setOption(option)}
-				>
-					<OptionText>{option}</OptionText>
-				</OptionContainer>
-				{!isSelected && nextNotSelected && <Separator />}
-			</>
-		);
+		if (areImages) {
+			return (
+				<>
+					<ImageContainer>
+						<img src={option} alt={option.substring(12)} />
+					</ImageContainer>
+				</>
+			);
+		} else {
+			// separator just if 2 consequentely not selected
+			const next = options[i + 1];
+			const nextNotSelected = next != null && next !== selectedOption;
+			return (
+				<>
+					<OptionContainer
+						selected={isSelected}
+						onClick={() => setOption(option)}
+					>
+						<OptionText>{option}</OptionText>
+					</OptionContainer>
+					{!isSelected && nextNotSelected && <Separator />}
+				</>
+			);
+		}
+
+		// separator just if 2 consequentely not selected
+		// const next = options[i + 1];
+		// const nextNotSelected = next != null && next !== selectedOption;
+		// return (
+		// 	<>
+		// 		<OptionContainer
+		// 			selected={isSelected}
+		// 			onClick={() => setOption(option)}
+		// 		>
+		// 			{areImages
+		// 				? <img src={option} alt={option.substring(12)} />
+		// 				: <OptionText>{option}</OptionText>
+		// 			}
+		// 		</OptionContainer>
+		// 		{!isSelected && nextNotSelected && <Separator />}
+		// 	</>
+		// );
 	});
 
 	return (
 		<div>
 			<LabelText>{label}</LabelText>
-			<SelectionBarContainer>{renderedOptions}</SelectionBarContainer>
+			{/* {areImages 
+				? 
+				: <SelectionBarContainer>{renderedOptions}</SelectionBarContainer>
+			} */}
+			<SelectionBarContainer areImages={areImages}>
+				{renderedOptions}
+			</SelectionBarContainer>
 		</div>
 	);
 }
