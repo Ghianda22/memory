@@ -24,6 +24,10 @@ const TextField = styled.input`
 	font-weight: 500;
 	font-size: 16px;
 	color: ${(props) => props.theme.text.colors.dark60};
+
+	:focus-visible {
+		outline-color: ${(props) => props.theme.colors.separator}
+	}
 `;
 
 export default function TextInput(props: ITextInputProps) {

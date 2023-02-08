@@ -47,7 +47,6 @@ const OptionText = styled.p`
 `;
 
 const Separator = styled.div`
-box-sizing: border-box;
   height: 55%;
   width: 0;
   border: 0.5px solid ${(props) => props.theme.colors.separator}
@@ -78,9 +77,9 @@ export default function SelectionBar(props: ISelectionBarProps) {
 	});
 
 	return (
-		<>
+		<div>
 			<LabelText>{label}</LabelText>
 			<SelectionBarContainer>{renderedOptions}</SelectionBarContainer>
-		</>
+		</div>
 	);
 }

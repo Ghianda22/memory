@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { images } from "../../data/imagesData";
 import { NewGameContext } from "../../pages/NewGame";
+import Button from "../generics/Button/Button";
 import LabelText from "../generics/LabelText";
 import TextInput from "../generics/TextInput";
 import SelectionBar from "../SelectionBar";
@@ -10,10 +12,12 @@ const FullPage = styled.div`
 	display: flex;
 	height: 100%;
 	flex-direction: column;
+	justify-content: space-between;
 `;
 
 export default function NewGameTemplate() {
 	const context = useContext(NewGameContext);
+	const navigate = useNavigate();
 	const [gameName, setGameName] = React.useState<string>();
 	const [numberOfPlayers, setNumberOfPlayers] = React.useState<string>(
 		context.selectionBar[0].options[1]
@@ -51,6 +55,12 @@ export default function NewGameTemplate() {
 	const handleChangeName = (event: any) => {
 		setGameName(event.target.value);
 	};
+
+	const navigateToNextPage = () => {
+		// if(mode === context.selectionBar[1].options[0])
+		// 	navigate("/sendinvitations/" + numberOfPlayers);
+		// else navigate("/livegame");
+	}
 	// const changeSubmit = () => {
 	// 	// Backend
 	// }
@@ -74,8 +84,12 @@ export default function NewGameTemplate() {
 			/>
 
 			{/* Another selection bar but with animals */}
-			<TextInput image={""} placeholder={context.gameName.placeholder} handleOnChange={handleChangeName}				
+			<TextInput image={"images/icons/dog-icon.png"} placeholder={context.gameName.placeholder} handleOnChange={handleChangeName}				
 			/>
+			
+			{/* Browse Image modal */}
+
+			<Button buttonStyle={"normal"} text={context.button} onClickHandler={navigateToNextPage}/>
 		</FullPage>
 	);
 }
