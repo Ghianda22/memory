@@ -8,6 +8,7 @@ import LabelText from "../generics/LabelText";
 import Modal from "../generics/Modal";
 import TextInput from "../generics/TextInput";
 import Title from "../generics/Title";
+import ImageSelectionBar from "../ImageSelectionBar";
 import SelectionBar from "../SelectionBar";
 
 const FullPage = styled.div`
@@ -100,27 +101,25 @@ export default function NewGameTemplate() {
 					selectionBar={context.selectionBar[0]}
 					selectedOption={numberOfPlayers}
 					setOption={changeNumberOfPlayers}
-					areImages={false}
 				/>
 				<SelectionBar
 					selectionBar={context.selectionBar[1]}
 					selectedOption={mode}
 					setOption={changeMode}
-					areImages={false}
 				/>
 				<SelectionBar
 					selectionBar={context.selectionBar[2]}
 					selectedOption={difficulty}
 					setOption={changeDifficulty}
-					areImages={false}
 				/>
-				<SelectionBar
+				<ImageSelectionBar
 					selectionBar={context.selectionBar[3]}
 					selectedOption={avatar}
 					setOption={selectAvatar}
-					areImages={true}
+					displayOnXAxis={true}
 				/>
 
+				{/* Game name input */}
 				<div>
 					<LabelText>{context.gameName.label}</LabelText>
 					<TextInput
@@ -141,11 +140,11 @@ export default function NewGameTemplate() {
 						/>
 						{/* <div></div> */}
 						<GameImageContainer>
-								{/* <SelectedGameImage
+							{/* <SelectedGameImage
 									src={gameImage}
 									alt={gameImage.substring(12)}
 								/> */}
-							</GameImageContainer>
+						</GameImageContainer>
 					</BrowseImageContainer>
 				</div>
 
@@ -154,14 +153,14 @@ export default function NewGameTemplate() {
 						text={context.gameImage.closeModal}
 						closeModal={toggleModal}
 					>
-						<SelectionBar
+						<ImageSelectionBar
 							selectionBar={{
 								label: context.gameImage.label,
 								options: images.background,
 							}}
 							selectedOption={gameImage}
 							setOption={selectGameImage}
-							areImages={true}
+							displayOnXAxis={false}
 						/>
 					</Modal>
 				)}

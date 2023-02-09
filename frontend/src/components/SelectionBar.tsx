@@ -1,9 +1,8 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import ISelectionBarProps from "../interfaces/ISelectionbarProps";
+import {ISelectionBarProps} from "../interfaces/ISelectionbarProps";
 import LabelText from "./generics/LabelText";
 
-// --- TEXT SELECTION ---------------------------------------------------------------------------------
 const SelectionBarContainer = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -44,6 +43,7 @@ const OptionText = styled.p`
 	line-height: 20px;
 `;
 //TODO: fix again this damn separator height
+// the div wrapping the return causes this somehow
 const Separator = styled.div`
   height: 55%;
   width: 0;
@@ -51,40 +51,15 @@ const Separator = styled.div`
   border-radius: 0.5px;
 `;
 
-// --- IMAGES SELECTION ---------------------------------------------------------------------------------
-const SelectionImageContainer = styled(SelectionBarContainer)`
-	gap: 48px;
-	justify-content: left;
-	padding: 0px 11px;
-	background: none;
-`;
-//TODO: set a responsive width
-const ImageContainer = styled(OptionContainer)<{ selected: boolean }>`
-	width: 64px;
-	padding: 3px;
-`;
 
 export default function SelectionBar(props: ISelectionBarProps) {
 	// state?
 	const { label, options } = props.selectionBar;
 	console.log(options);
-	const { areImages, selectedOption, setOption } = props;
+	const { selectedOption, setOption } = props;
 
 	const renderedOptions = options.map((option, i) => {
 		const isSelected = option === selectedOption;
-		if (areImages) {
-			return (
-				<>
-					<ImageContainer
-						selected={isSelected}
-						onClick={() => setOption(option)}
-					>
-						<img src={option} alt={option.substring(12)} />
-					</ImageContainer>
-				</>
-			);
-		} else {
-			// separator just if 2 consequentely not selected
 			const next = options[i + 1];
 			const nextNotSelected = next != null && next !== selectedOption;
 			return (
@@ -98,20 +73,13 @@ export default function SelectionBar(props: ISelectionBarProps) {
 					{!isSelected && nextNotSelected && <Separator />}
 				</>
 			);
-		}
 
 	});
 
 	return (
 		<div>
 			<LabelText>{label}</LabelText>
-			{areImages ? (
-				<SelectionImageContainer>
-					{renderedOptions}
-				</SelectionImageContainer>
-			) : (
-				<SelectionBarContainer>{renderedOptions}</SelectionBarContainer>
-			)}
+			<SelectionBarContainer>{renderedOptions}</SelectionBarContainer>
 		</div>
 	);
 }
