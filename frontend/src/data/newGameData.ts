@@ -22,20 +22,6 @@ export const data = {
 			]
 		}
 	],
-	// selectionBar: {
-	// 	numOfPlayersSelectionBar: {
-	// 		label: "Number of participants",
-	// 		options: [2, 3, 4],
-	// 	},
-	// 	modeSelectionBar: {
-	// 		label: "Game mode",
-	// 		options: ["Private", "Public"],
-	// 	},
-	// 	difficultySelectionBar: {
-	// 		label: "Number of cards (difficulty)",
-	// 		options: ["8 (easy)", "16 (medium)", "24 (hard)"],
-	// 	},
-	// },
 	gameName: {
 		label: "Name your game",
 		placeholder: "Game name",
