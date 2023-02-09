@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { images } from "../../data/imagesData";
+import INewGame from "../../interfaces/INewGame";
 import { NewGameContext } from "../../pages/NewGame";
 import Button from "../generics/Button/Button";
 import LabelText from "../generics/LabelText";
@@ -39,52 +40,25 @@ export default function NewGameTemplate() {
 	const context = useContext(NewGameContext);
 	const navigate = useNavigate();
 
-	// const [newGame, setNewGame] = useState<INewGame>({
-	// 	numberOfPlayers: context.selectionBar[0].options[1],
-	// 	mode: context.selectionBar[1].options[0],
-	// 	difficulty: context.selectionBar[2].options[0],
-	// 	avatar: "",
-	// 	gameImage: "",
-	// 	gameName: ""
-	// })
-
-	const [gameName, setGameName] = useState<string>();
-	const [numberOfPlayers, setNumberOfPlayers] = useState<string>(
-		context.selectionBar[0].options[1]
-	);
-	const [mode, setMode] = useState<string>(
-		context.selectionBar[1].options[0]
-	);
-	const [difficulty, setDifficulty] = useState<string>(
-		context.selectionBar[2].options[0]
-	);
-	const [avatar, setAvatar] = useState<string>("");
-	const [gameImage, setGameImage] = useState<string>("");
+	const [newGame, setNewGame] = useState<INewGame>({
+		numberOfPlayers: context.selectionBar[0].options[1],
+		mode: context.selectionBar[1].options[0],
+		difficulty: context.selectionBar[2].options[0],
+		avatar: "",
+		gameImage: "",
+		gameName: ""
+	})
 	const [modalIsVisible, setModalIsVisible] = useState<boolean>(false);
 
-	const changeNumberOfPlayers = (numOption: string) => {
-		setNumberOfPlayers(numOption);
-	};
-	const changeMode = (modeOption: string) => {
-		setMode(modeOption);
-	};
-	const changeDifficulty = (difficultyOption: string) => {
-		setDifficulty(difficultyOption);
-	};
-	const handleChangeName = (event: any) => {
-		setGameName(event.target.value);
-	};
-	const selectAvatar = (image: string) => {
-		setAvatar(image);
-	};
+	
+	const updateGameDetails = (name:string, value: string) => {
+		console.log(name + "  = " + value);
+		setNewGame({ ...newGame, [name]: value });
+	}
 
 	const toggleModal = () => {
 		setModalIsVisible(!modalIsVisible);
 	};
-	const selectGameImage = (image: string) => {
-		setGameImage(image);
-	};
-
 	const navigateToNextPage = () => {
 		// if(mode === context.selectionBar[1].options[0])
 		// 	navigate("/sendinvitations/" + numberOfPlayers);
@@ -99,23 +73,27 @@ export default function NewGameTemplate() {
 			<FullPage>
 				<SelectionBar
 					selectionBar={context.selectionBar[0]}
-					selectedOption={numberOfPlayers}
-					setOption={changeNumberOfPlayers}
+					selectedOption={newGame.numberOfPlayers}
+					optionName="numberOfPlayers"
+					setOption={updateGameDetails}
 				/>
 				<SelectionBar
 					selectionBar={context.selectionBar[1]}
-					selectedOption={mode}
-					setOption={changeMode}
+					selectedOption={newGame.mode}
+					optionName="mode"
+					setOption={updateGameDetails}
 				/>
 				<SelectionBar
 					selectionBar={context.selectionBar[2]}
-					selectedOption={difficulty}
-					setOption={changeDifficulty}
+					selectedOption={newGame.difficulty}
+					optionName="difficulty"
+					setOption={updateGameDetails}
 				/>
 				<ImageSelectionBar
 					selectionBar={context.selectionBar[3]}
-					selectedOption={avatar}
-					setOption={selectAvatar}
+					selectedOption={newGame.avatar}
+					optionName="avatar"
+					setOption={updateGameDetails}
 					displayOnXAxis={true}
 				/>
 
@@ -125,7 +103,8 @@ export default function NewGameTemplate() {
 					<TextInput
 						image={""}
 						placeholder={context.gameName.placeholder}
-						handleOnChange={handleChangeName}
+						fieldName="gameName"
+						handleOnChange={updateGameDetails}
 					/>
 				</div>
 
@@ -158,9 +137,10 @@ export default function NewGameTemplate() {
 								label: context.gameImage.label,
 								options: images.background,
 							}}
-							selectedOption={gameImage}
-							setOption={selectGameImage}
+							selectedOption={newGame.gameImage}
+							setOption={updateGameDetails}
 							displayOnXAxis={false}
+							optionName="gameImage"
 						/>
 					</Modal>
 				)}

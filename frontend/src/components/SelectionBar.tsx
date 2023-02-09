@@ -55,8 +55,7 @@ const Separator = styled.div`
 export default function SelectionBar(props: ISelectionBarProps) {
 	// state?
 	const { label, options } = props.selectionBar;
-	console.log(options);
-	const { selectedOption, setOption } = props;
+	const { optionName, selectedOption, setOption } = props;
 
 	const renderedOptions = options.map((option, i) => {
 		const isSelected = option === selectedOption;
@@ -65,8 +64,9 @@ export default function SelectionBar(props: ISelectionBarProps) {
 			return (
 				<>
 					<OptionContainer
+						key={i}
 						selected={isSelected}
-						onClick={() => setOption(option)}
+						onClick={() => setOption(optionName, option)}
 					>
 						<OptionText>{option}</OptionText>
 					</OptionContainer>

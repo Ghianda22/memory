@@ -66,22 +66,23 @@ const ImageContainerY = styled(ImageContainerX)`
 export default function SelectionBar(props: IImageBarProps) {
 	// state?
 	const { label, options } = props.selectionBar;
-	console.log(options);
-	const { displayOnXAxis: displayOnXAxes, selectedOption, setOption } = props;
+	const { displayOnXAxis, selectedOption, optionName, setOption } = props;
 
-	const renderedOptions = options.map((option) => {
+	const renderedOptions = options.map((option, i) => {
 		const isSelected = option === selectedOption;
-		return displayOnXAxes ? (
+		return displayOnXAxis ? (
 			<ImageContainerX
+				key={i}
 				selected={isSelected}
-				onClick={() => setOption(option)}
+				onClick={() => setOption(optionName, option)}
 			>
 				<img src={option} alt={option.substring(12)} />
 			</ImageContainerX>
 		) : (
 			<ImageContainerY
+				key={i}
 				selected={isSelected}
-				onClick={() => setOption(option)}
+				onClick={() => setOption(optionName, option)}
 			>
 				<img src={option} alt={option.substring(12)} />
 			</ImageContainerY>
@@ -91,7 +92,7 @@ export default function SelectionBar(props: IImageBarProps) {
 	return (
 		<OverflowHandler>
 			<LabelText>{label}</LabelText>
-			{displayOnXAxes ? (
+			{displayOnXAxis ? (
 				<LayoutContainerX>{renderedOptions}</LayoutContainerX>
 			) : (
 				<LayoutContainerY>{renderedOptions}</LayoutContainerY>

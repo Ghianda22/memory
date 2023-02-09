@@ -31,11 +31,11 @@ const TextField = styled.input`
 `;
 
 export default function TextInput(props: ITextInputProps) {
-	const { image, placeholder, handleOnChange } = props;
+	const { image, placeholder, fieldName, handleOnChange } = props;
 	return (
 		<InputContainer>
 			{image && <InputIcon src={image} />}
-			<TextField onChange={handleOnChange} placeholder={placeholder}/>
+			<TextField onChange={(e) => handleOnChange(fieldName, e.target.value)} placeholder={placeholder}/>
 		</InputContainer>
 	);
 }
