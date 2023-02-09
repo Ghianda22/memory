@@ -116,7 +116,7 @@ export default function NewGameTemplate() {
 				/>
 			</div>
 			{modalIsVisible && (
-				<Modal closeModal={toggleModal}>
+				<Modal text={context.gameImage.closeModal} closeModal={toggleModal}>
 					<SelectionBar
 						selectionBar={{label: context.gameImage.label, options: images.background}}
 						selectedOption={gameImage}

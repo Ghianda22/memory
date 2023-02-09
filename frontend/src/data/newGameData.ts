@@ -43,6 +43,7 @@ export const data = {
 	gameImage: {
 		label: "Choose an image for your game",
 		placeholder: "Browse image...",
+		closeModal: "Select Image"
 	},
 	button: "Start"
 };

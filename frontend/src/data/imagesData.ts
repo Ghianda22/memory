@@ -20,5 +20,5 @@ export const images = {
 		"images/active_games/einstein-ag-bg.jpg",
 		"images/active_games/elephant-ag-bg.jpg",
 		"images/active_games/lion-ag-bg.jpg",
-	],
+	]
 };

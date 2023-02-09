@@ -14,6 +14,9 @@ export const ShadowDiv = styled.div`
 	background-color: rgba(0, 0, 0, 0.4);
 `;
 export const ModalDiv = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	width: 80%;
 	height: 65%;
 	border-radius: 10px;
