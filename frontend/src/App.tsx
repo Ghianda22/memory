@@ -7,12 +7,11 @@ import theme from "./styles/theme";
 
 const StyledApp = styled.div`
 	display: flex;
-	width: auto;
+	
 	height: 100vh;
 	flex-direction: column;
 	align-items: center;
-	padding: 42px 24px 32px;
-	box-sizing: border-box;
+	padding: 42px 13px 32px;
 
 	background-position: top;
 	background-size: 100% auto;

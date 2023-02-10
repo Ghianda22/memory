@@ -1,5 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import {ISelectionBarProps} from "../interfaces/ISelectionbarProps";
+import LabelText from "./generics/LabelText";
 
 const SelectionBarContainer = styled.div`
 	display: flex;
@@ -11,12 +13,12 @@ const SelectionBarContainer = styled.div`
 
 	height: fit-content;
 	padding: 2px;
-
-	background-color: ${(props) => props.theme.colors.selector};
+	background-color: ${(props) =>props.theme.colors.selector};
 	border-radius: 8px;
 `;
-
 const OptionContainer = styled.div<{ selected?: boolean }>`
+	padding: 6px 8px;
+
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -34,41 +36,50 @@ const OptionContainer = styled.div<{ selected?: boolean }>`
 			border-radius: 7px;
 		`}
 `;
-
 const OptionText = styled.p`
-	padding: 6px 8px;
-
 	font-family: "SF Pro Text";
 	font-weight: 400;
 	font-size: 13px;
 	line-height: 20px;
 `;
-
+//TODO: fix again this damn separator height
+// the div wrapping the return causes this somehow
 const Separator = styled.div`
-  height: 100%;
+  height: 55%;
   width: 0;
-  padding: 8px 0;
   border: 0.5px solid ${(props) => props.theme.colors.separator}
   border-radius: 0.5px;
 `;
 
-export default function SelectionBar() {
-	const optionText = "1";
+
+export default function SelectionBar(props: ISelectionBarProps) {
+	// state?
+	const { label, options } = props.selectionBar;
+	const { optionName, selectedOption, setOption } = props;
+
+	const renderedOptions = options.map((option, i) => {
+		const isSelected = option === selectedOption;
+			const next = options[i + 1];
+			const nextNotSelected = next != null && next !== selectedOption;
+			return (
+				<>
+					<OptionContainer
+						key={i}
+						selected={isSelected}
+						onClick={() => setOption(optionName, option)}
+					>
+						<OptionText>{option}</OptionText>
+					</OptionContainer>
+					{!isSelected && nextNotSelected && <Separator />}
+				</>
+			);
+
+	});
+
 	return (
-		<SelectionBarContainer>
-			<OptionContainer selected>
-				<OptionText>{optionText}</OptionText>
-			</OptionContainer>
-
-			<OptionContainer>
-				<OptionText>{optionText}</OptionText>
-			</OptionContainer>
-
-			<Separator></Separator>
-
-			<OptionContainer>
-				<OptionText>{optionText}</OptionText>
-			</OptionContainer>
-		</SelectionBarContainer>
+		<div>
+			<LabelText>{label}</LabelText>
+			<SelectionBarContainer>{renderedOptions}</SelectionBarContainer>
+		</div>
 	);
 }
