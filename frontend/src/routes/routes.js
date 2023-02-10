@@ -14,7 +14,7 @@ export const routes = [
         element: <NewGame />
     },
     {
-        path: "/sendinvitation",
+        path: "/sendinvitations/:numberOfPlayers",
         element: <SendInvitations />
     },
     {

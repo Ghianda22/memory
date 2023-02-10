@@ -50,7 +50,7 @@ export default function NewGameTemplate() {
 	})
 	const [modalIsVisible, setModalIsVisible] = useState<boolean>(false);
 
-	
+
 	const updateGameDetails = (name:string, value: string) => {
 		console.log(name + "  = " + value);
 		setNewGame({ ...newGame, [name]: value });
@@ -60,8 +60,8 @@ export default function NewGameTemplate() {
 		setModalIsVisible(!modalIsVisible);
 	};
 	const navigateToNextPage = () => {
-		// if(mode === context.selectionBar[1].options[0])
-		// 	navigate("/sendinvitations/" + numberOfPlayers);
+		if(newGame.mode === context.selectionBar[1].options[0])
+			navigate("/sendinvitations/" + newGame.numberOfPlayers);
 		// else navigate("/livegame");
 	};
 	// const changeSubmit = () => {
