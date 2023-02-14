@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { images } from "../../data/imagesData";
 import INewGame from "../../interfaces/INewGame";
@@ -12,7 +12,7 @@ import Title from "../generics/Title";
 import ImageSelectionBar from "../ImageSelectionBar";
 import SelectionBar from "../SelectionBar";
 
-const FullPage = styled.div`
+const FullPage = styled(Form)`
 	display: flex;
 	height: 100%;
 	flex-direction: column;
@@ -35,6 +35,15 @@ const GameImageContainer = styled.div`
 // const SelectedGameImage = styled.img`
 // 	width: 75%;
 // `;
+
+
+export async function action({ request }: {request: Request}) {
+	const formData = await request.formData();
+	console.log(formData)
+	console.log("ACTION!")
+} 
+	
+	
 
 export default function NewGameTemplate() {
 	const context = useContext(NewGameContext);
@@ -64,13 +73,12 @@ export default function NewGameTemplate() {
 			navigate("/sendinvitations/" + newGame.numberOfPlayers);
 		// else navigate("/livegame");
 	};
-	// const changeSubmit = () => {
-	// 	// Backend
-	// }
+
+
 	return (
 		<>
 			<Title>{context.title}</Title>
-			<FullPage>
+			<FullPage method="post">
 				<SelectionBar
 					selectionBar={context.selectionBar[0]}
 					selectedOption={newGame.numberOfPlayers}
@@ -146,9 +154,10 @@ export default function NewGameTemplate() {
 				)}
 
 				<Button
+					type="submit"
 					buttonStyle={"normal"}
 					text={context.button}
-					onClickHandler={navigateToNextPage}
+					onClickHandler={() => {}}
 				/>
 			</FullPage>
 		</>

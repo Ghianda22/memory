@@ -1,4 +1,5 @@
 
+import { action as formAction } from "../components/templates/NewGameTemplate";
 import ActiveGames from "../pages/ActiveGames";
 import NewGame from "../pages/NewGame";
 import SendInvitations from "../pages/SendInvitations";
@@ -11,7 +12,8 @@ export const routes = [
     },
     {
         path: "/newgame",
-        element: <NewGame />
+        element: <NewGame />,
+        action: formAction
     },
     {
         path: "/sendinvitations/:numberOfPlayers",
