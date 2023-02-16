@@ -4,13 +4,7 @@ import { StartGameContext } from "../../pages/StartGame";
 import Button from "../generics/Button/Button";
 import Title from "../generics/Title";
 import { useNavigate } from "react-router-dom";
-
-const FullPage = styled.div`
-	display: flex;
-	height: 100%;
-	flex-direction: column;
-	justify-content: space-between;
-`;
+import FullPage from "../generics/FullPage";
 
 // --- DOLPHIN LOGO ------------------------------------------
 const DivLogo = styled.div`
