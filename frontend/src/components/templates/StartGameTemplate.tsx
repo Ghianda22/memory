@@ -32,7 +32,7 @@ const StyledP = styled.p`
 
 	font-weight: 400;
 	font-size: 16px;
-	color: ${(props) => props.theme.text.colors.dark60};
+	color: ${(props) => props.theme.colors.dark60};
 `;
 const StartTitle = styled(Title)`
 	font-weight: 700;

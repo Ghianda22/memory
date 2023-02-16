@@ -2,6 +2,7 @@ const theme = {
 	colors: {
 		accentBlue100: "#554AF0",
 		accentBlue80: "#776EF3",
+		accentBlue30: "#CCC9FB",
 		white: "#FFFFFF",
 		almostWhite: "#F8F8FA",
 		normalActive: "#2113E8",
@@ -10,15 +11,10 @@ const theme = {
 		separator: "rgba(60, 60, 67, 0.36);",
 		outline: "#D1D5DB",
 		outlineSecondary: "#D2D2D7",
-	},
-	text: {
-		colors: {
-			dark100: "#04021D",
-			dark80: "#36354A",
-			dark60: "#686777",
-			accentBlue30: "#CCC9FB",
-		},
-	},
+		dark100: "#04021D",
+		dark80: "#36354A",
+		dark60: "#686777"
+	}
 };
 
 export default theme;

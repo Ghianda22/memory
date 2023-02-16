@@ -6,7 +6,7 @@ const LabelText = styled.h3`
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 120%;
-	color: ${(props) => props.theme.text.colors.dark80};
+	color: ${(props) => props.theme.colors.dark80};
 `;
 
 export default LabelText;
