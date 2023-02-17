@@ -6,6 +6,7 @@ import ProfileIcon from "./generics/icons/ProfileIcon";
 import IGame from "../interfaces/IGame";
 import Button from "./generics/Button/Button";
 import UserIcon from "./generics/UserIcon";
+import IButtonProps from "../interfaces/IButtonProps";
 
 const CardContainer = styled.div<{ image: string }>`
 	min-height: 209px;
@@ -26,7 +27,6 @@ const CardContainer = styled.div<{ image: string }>`
 	background-position: center;
 	border-radius: 12px;
 
-	
 	color: ${(props) => props.theme.colors.white};
 `;
 const InfoStyle = styled.p`
@@ -46,7 +46,7 @@ const InfoContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: left;
-	padding: 7px;
+	padding: 12px 0 7px;
 	gap: 32px;
 `;
 const IconInfo = styled.div`
@@ -57,7 +57,7 @@ const IconInfo = styled.div`
 	width: fit-content;
 `;
 const Difficulty = styled.p`
-	font-we-ight: 400;
+	font-weight: 400;
 	font-size: 14px;
 	color: ${(props) => props.theme.colors.accent10};
 `;
@@ -68,6 +68,7 @@ const CardFooter = styled.div`
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+	padding-top: 9px;
 `;
 const AuthorContainer = styled.div`
 	display: flex;
@@ -86,7 +87,9 @@ const ThisIsAuthor = styled.p`
 	color: ${(props) => props.theme.colors.accent30};
 `;
 
-// const ButtonContainer = styled.div``;
+const ButtonContainer = styled.div`
+	
+`;
 
 export default function GameCard({ game }: { game: IGame }) {
 	return (
@@ -117,15 +120,15 @@ export default function GameCard({ game }: { game: IGame }) {
 						<ThisIsAuthor>Started this game</ThisIsAuthor>
 					</div>
 				</AuthorContainer>
-				<Button
-					buttonStyle={"negative"}
-					text={data.button}
-					onClickHandler={function (): void {
-						throw new Error("Function not implemented.");
-					}}
-				/>
-				{/* <ButtonContainer>
-				</ButtonContainer> */}
+				<ButtonContainer>
+					<Button
+						buttonStyle={"negative"}
+						text={data.button}
+						onClickHandler={function (): void {
+							throw new Error("Function not implemented.");
+						}}
+					/>
+				</ButtonContainer>
 			</CardFooter>
 		</CardContainer>
 	);

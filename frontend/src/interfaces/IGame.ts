@@ -1,4 +1,5 @@
 export default interface IGame {
+	gameId: string,
 	gameName: string;
 	gameDate: string;
 	gameImage: string;

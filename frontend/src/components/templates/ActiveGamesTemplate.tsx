@@ -11,8 +11,6 @@ export default function ActiveGamesTemplate() {
 		return <GameCard key={i} game={game} />;
 	});
 
-	console.log(renderedGames);
-
 	return (
 		<>
 			<Title>{data.title}</Title>

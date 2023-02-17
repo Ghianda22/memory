@@ -42,6 +42,7 @@ const StyledButton = styled.button<{ buttonStyle: string }>`
 	${(props) =>
 		props.buttonStyle === "negative" &&
 		css`
+			padding: 6px 12px;
 			background-color: ${props.theme.colors.white};
 			color: ${props.theme.colors.accent100};
 			:active {
