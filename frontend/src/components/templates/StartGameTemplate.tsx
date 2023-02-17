@@ -14,7 +14,7 @@ const DivLogo = styled.div`
 	background: linear-gradient(45deg, #554af0, #554af0);
 	-webkit-mask-image: linear-gradient(
 		90deg,
-		${(props) => props.theme.colors.accentBlue100},
+		${(props) => props.theme.colors.accent100},
 		#0000009e
 	);
 	max-height: 76px;

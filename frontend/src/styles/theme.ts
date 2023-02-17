@@ -1,8 +1,9 @@
 const theme = {
 	colors: {
-		accentBlue100: "#554AF0",
-		accentBlue80: "#776EF3",
-		accentBlue30: "#CCC9FB",
+		accent100: "#554AF0",
+		accent80: "#776EF3",
+		accent30: "#CCC9FB",
+		accent10: "#EEEDFE",
 		white: "#FFFFFF",
 		almostWhite: "#F8F8FA",
 		normalActive: "#2113E8",
@@ -13,15 +14,15 @@ const theme = {
 		outlineSecondary: "#D2D2D7",
 		dark100: "#04021D",
 		dark80: "#36354A",
-		dark60: "#686777"
-	}
+		dark60: "#686777",
+	},
 };
 
 export default theme;
 
 /* --- SHORTCUTS ---
 
-${(props) => props.theme.colors.accentBlue100}
+${(props) => props.theme.colors.accent100}
 
 
 */

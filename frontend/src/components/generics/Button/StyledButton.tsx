@@ -10,7 +10,7 @@ const StyledButton = styled.button<{ buttonStyle: string }>`
 	${(props) =>
 		props.buttonStyle === "normal" &&
 		css`
-			background-color: ${props.theme.colors.accentBlue100};
+			background-color: ${props.theme.colors.accent100};
 			color: ${props.theme.colors.white};
 			:active {
 				background-color: ${props.theme.colors.normalActive};
@@ -20,7 +20,7 @@ const StyledButton = styled.button<{ buttonStyle: string }>`
 		props.buttonStyle === "secondary" &&
 		css`
 			background-color: ${props.theme.colors.almostWhite};
-			color: ${props.theme.colors.accentBlue100};
+			color: ${props.theme.colors.accent100};
 			:active {
 				background-color: ${props.theme.colors.secondaryActive};
 			}
@@ -34,7 +34,7 @@ const StyledButton = styled.button<{ buttonStyle: string }>`
 			font-size: 12px;
 			line-height: 20px;
 			background-color: ${props.theme.colors.white};
-			color: ${props.theme.colors.accentBlue80};
+			color: ${props.theme.colors.accent80};
 			:active {
 				background-color: ${props.theme.colors.almostWhite};
 			}
@@ -43,11 +43,11 @@ const StyledButton = styled.button<{ buttonStyle: string }>`
 		props.buttonStyle === "negative" &&
 		css`
 			background-color: ${props.theme.colors.white};
-			color: ${props.theme.colors.accentBlue100};
+			color: ${props.theme.colors.accent100};
 			:active {
 				background-color: ${props.theme.colors.secondaryActive};
 			}
-			border: 1px solid ${props.theme.colors.accentBlue100};
+			border: 1px solid ${props.theme.colors.accent100};
 			font-weight: 600;
 		`}
 `;
