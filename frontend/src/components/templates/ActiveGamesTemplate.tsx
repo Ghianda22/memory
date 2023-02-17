@@ -6,7 +6,8 @@ import GameCard from "../GameCard";
 
 export default function ActiveGamesTemplate() {
 	const { data, games } = useContext(ActiveGamesContext);
-	const renderedGames = games.map((game, i) => {
+    const renderedGames = games.map((game, i) => {
+        // TODO add onclick navigation funcion
 		return <GameCard key={i} game={game} />;
 	});
 
