@@ -5,6 +5,7 @@ const FullPage = styled.div`
 	height: 100%;
 	flex-direction: column;
 	justify-content: space-between;
+	overflow-y: scroll;
 `;
 
 export default FullPage

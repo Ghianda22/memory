@@ -8,6 +8,7 @@ import Button from "./generics/Button/Button";
 import UserIcon from "./generics/UserIcon";
 
 const CardContainer = styled.div<{ image: string }>`
+	min-height: 209px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
@@ -20,7 +21,12 @@ const CardContainer = styled.div<{ image: string }>`
 			#554af0 66.15%
 		),
 		url(${(props) => props.image});
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
 	border-radius: 12px;
+
+	
 	color: ${(props) => props.theme.colors.white};
 `;
 const InfoStyle = styled.p`
@@ -56,14 +62,12 @@ const Difficulty = styled.p`
 	color: ${(props) => props.theme.colors.accent10};
 `;
 
-
 // --- FOOTER CONTAINERS ----------------------------------------------------------------------------
 const CardFooter = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding-top: 16px;
 `;
 const AuthorContainer = styled.div`
 	display: flex;
@@ -90,11 +94,11 @@ export default function GameCard({ game }: { game: IGame }) {
 			<GameName>{game.gameName}</GameName>
 			<InfoContainer>
 				<IconInfo>
-					<CalendarIcon/>
+					<CalendarIcon />
 					<InfoStyle>{game.gameDate}</InfoStyle>
 				</IconInfo>
 				<IconInfo>
-					<ProfileIcon/>
+					<ProfileIcon />
 					<InfoStyle>
 						{game.freeSeats}
 						{game.freeSeats > 1 ? " seats" : " seat"} left
