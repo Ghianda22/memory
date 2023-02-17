@@ -10,11 +10,11 @@ const LayoutContainerX = styled.div`
 	justify-content: left;
 	align-items: center;
 	letter-spacing: -0.08px;
+	overflow-y: scroll;
 
 	gap: 48px;
-	padding: 0px 11px;
+	padding: 9px 11px;
 
-	height: fit-content;
 	border-radius: 8px;
 `;
 const ImageContainerX = styled.div<{ selected: boolean }>`
@@ -24,7 +24,6 @@ const ImageContainerX = styled.div<{ selected: boolean }>`
 	text-align: center;
 	letter-spacing: -0.08px;
 
-	width: 64px;
 	padding: 3px;
 
 	${(props) =>
@@ -40,12 +39,15 @@ const OverflowHandler = styled.div`
 	overflow: auto;
 	padding-bottom: 10px;
 `;
-
+const ImageX = styled.img`
+	width: 64px;
+`;
 // --- VERTICAL LAYOUT ---------------------------------------------------------------------------------
 const LayoutContainerY = styled(LayoutContainerX)`
 	flex-direction: column;
 	justify-content: space-between;
 	gap: 5px;
+	height: 90%;
 `;
 //TODO: set a responsive width
 const ImageContainerY = styled(ImageContainerX)`
@@ -67,6 +69,7 @@ export default function SelectionBar(props: IImageBarProps) {
 	// state?
 	const { label, options } = props.selectionBar;
 	const { displayOnXAxis, selectedOption, optionName, setOption } = props;
+	console.log(options);
 
 	const renderedOptions = options.map((option, i) => {
 		const isSelected = option === selectedOption;
@@ -76,7 +79,7 @@ export default function SelectionBar(props: IImageBarProps) {
 				selected={isSelected}
 				onClick={() => setOption(optionName, option)}
 			>
-				<img src={option} alt={option.substring(12)} />
+				<ImageX src={option} alt={option.substring(12)} />
 			</ImageContainerX>
 		) : (
 			<ImageContainerY

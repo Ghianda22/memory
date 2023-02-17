@@ -1,6 +1,5 @@
 export const images = {
 	icon: [
-		"images/icons/dolphin-icon.png",
 		"images/icons/lion-icon.png",
 		"images/icons/dog-icon.png",
 		"images/icons/tophat-icon.png",
@@ -10,15 +9,16 @@ export const images = {
 		"images/icons/piano-icon.png",
 		"images/icons/pizza-icon.png",
 		"images/icons/present-icon.png",
-		"images/icons/silXly-icon.png",
+		"images/icons/silly-icon.png",
 		"images/icons/sunflower-icon.png",
 		"images/icons/target-icon.png",
-		"images/icons/umbrella-icon.png",
+		"images/icons/dolphin-icon.png",
+		"images/icons/umbrella-icon.png"
 	],
 	background: [
 		"images/active_games/brain-ag-bg.jpg",
 		"images/active_games/einstein-ag-bg.jpg",
 		"images/active_games/elephant-ag-bg.jpg",
 		"images/active_games/lion-ag-bg.jpg",
-	]
+	],
 };

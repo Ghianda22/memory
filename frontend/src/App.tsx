@@ -11,7 +11,7 @@ const StyledApp = styled.div`
 	height: 100vh;
 	flex-direction: column;
 	align-items: center;
-	padding: 42px 13px 32px;
+	padding: 54px 13px 32px;
 
 	background-position: top;
 	background-size: 100% auto;

@@ -1,3 +1,5 @@
+import { images } from "./imagesData";
+
 export const data = {
 	title: "New game",
 	selectionBar: [
@@ -15,12 +17,8 @@ export const data = {
 		},
 		{
 			label: "Choose your avatar",
-			options: [
-				"images/icons/lion-icon.png",
-				"images/icons/dog-icon.png",
-				"images/icons/tophat-icon.png",
-			]
-		}
+			options: images.icon
+		},
 	],
 	gameName: {
 		label: "Name your game",
@@ -29,7 +27,7 @@ export const data = {
 	gameImage: {
 		label: "Choose an image for your game",
 		placeholder: "Browse image...",
-		closeModal: "Select Image"
+		closeModal: "Select Image",
 	},
-	button: "Start"
+	button: "Start",
 };

@@ -24,10 +24,11 @@ const BrowseImageContainer = styled.div`
 	flex-direction: row;
 	align-items: flex-start;
 	justify-content: space-between;
+	padding: 0 11px;
 `;
 const GameImageContainer = styled.div`
 	text-align: end;
-	width: 135%;
+	width: 120%;
 	padding: 5px;
 `;
 

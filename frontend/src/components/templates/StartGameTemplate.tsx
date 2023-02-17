@@ -12,10 +12,13 @@ const FullPage = styled.div`
 	justify-content: space-between;
 `;
 
+const StartFullPage = styled(FullPage)`
+	padding: 0 13px;
+`
+
 // --- DOLPHIN LOGO ------------------------------------------
 const DivLogo = styled.div`
 	align-self: flex-start;
-	margin-top: 42px;
 	margin-left: 13.47px;
 	background: linear-gradient(45deg, #554af0, #554af0);
 	-webkit-mask-image: linear-gradient(
@@ -56,7 +59,7 @@ export default function StartGameTemplate() {
 	const context = useContext(StartGameContext);
 	const navigate = useNavigate();
 	return (
-		<FullPage>
+		<StartFullPage>
 			<div>
 				<DivLogo>
 					<Logo src={context.image.src} alt={context.image.alt} />
@@ -79,6 +82,6 @@ export default function StartGameTemplate() {
 					onClickHandler={() => navigate("/activegames")}
 				/>
 			</ButtonsContainer>
-		</FullPage>
+		</StartFullPage>
 	);
 }

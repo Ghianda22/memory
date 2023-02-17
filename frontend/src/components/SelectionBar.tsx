@@ -3,6 +3,10 @@ import styled, { css } from "styled-components";
 import {ISelectionBarProps} from "../interfaces/ISelectionbarProps";
 import LabelText from "./generics/LabelText";
 
+const JustSomePadding = styled.div`
+	padding-bottom: 13px;
+`
+
 const SelectionBarContainer = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -77,9 +81,9 @@ export default function SelectionBar(props: ISelectionBarProps) {
 	});
 
 	return (
-		<div>
+		<JustSomePadding>
 			<LabelText>{label}</LabelText>
 			<SelectionBarContainer>{renderedOptions}</SelectionBarContainer>
-		</div>
+		</JustSomePadding>
 	);
 }
