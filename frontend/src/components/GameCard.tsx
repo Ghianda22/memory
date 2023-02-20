@@ -7,6 +7,7 @@ import IGame from "../interfaces/IGame";
 import Button from "./generics/Button/Button";
 import UserIcon from "./generics/UserIcon";
 import IButtonProps from "../interfaces/IButtonProps";
+import IDtoGame from "../interfaces/IDtoGame";
 
 const CardContainer = styled.div<{ image: string }>`
 	min-height: 209px;
@@ -87,11 +88,9 @@ const ThisIsAuthor = styled.p`
 	color: ${(props) => props.theme.colors.accent30};
 `;
 
-const ButtonContainer = styled.div`
-	
-`;
+const ButtonContainer = styled.div``;
 
-export default function GameCard({ game }: { game: IGame }) {
+export default function GameCard({ game, joinGame }: IDtoGame) {
 	return (
 		<CardContainer image={game.gameImage}>
 			<GameName>{game.gameName}</GameName>
@@ -124,9 +123,7 @@ export default function GameCard({ game }: { game: IGame }) {
 					<Button
 						buttonStyle={"negative"}
 						text={data.button}
-						onClickHandler={function (): void {
-							throw new Error("Function not implemented.");
-						}}
+						onClickHandler={() => joinGame(game)}
 					/>
 				</ButtonContainer>
 			</CardFooter>

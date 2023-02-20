@@ -5,10 +5,9 @@ import FullPage from "../generics/FullPage";
 import GameCard from "../GameCard";
 
 export default function ActiveGamesTemplate() {
-	const { data, games } = useContext(ActiveGamesContext);
+	const { data, games, joinGame } = useContext(ActiveGamesContext);
     const renderedGames = games.map((game, i) => {
-        // TODO add onclick navigation funcion
-		return <GameCard key={i} game={game} />;
+		return <GameCard key={i} game={game} joinGame={joinGame}/>;
 	});
 
 	return (
