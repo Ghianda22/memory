@@ -7,7 +7,7 @@ const Title = styled.h1`
 	font-weight: 600;
 	font-size: 32px;
 	line-height: 120%;
-	color: ${(props) => props.theme.colors.accentBlue100};
+	color: ${(props) => props.theme.colors.accent100};
 `;
 
 export default Title;

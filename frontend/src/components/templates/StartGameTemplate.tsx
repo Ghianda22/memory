@@ -4,13 +4,7 @@ import { StartGameContext } from "../../pages/StartGame";
 import Button from "../generics/Button/Button";
 import Title from "../generics/Title";
 import { useNavigate } from "react-router-dom";
-
-const FullPage = styled.div`
-	display: flex;
-	height: 100%;
-	flex-direction: column;
-	justify-content: space-between;
-`;
+import FullPage from "../generics/FullPage";
 
 const StartFullPage = styled(FullPage)`
 	padding: 0 13px;
@@ -23,7 +17,7 @@ const DivLogo = styled.div`
 	background: linear-gradient(45deg, #554af0, #554af0);
 	-webkit-mask-image: linear-gradient(
 		90deg,
-		${(props) => props.theme.colors.accentBlue100},
+		${(props) => props.theme.colors.accent100},
 		#0000009e
 	);
 	max-height: 76px;
@@ -41,7 +35,7 @@ const StyledP = styled.p`
 
 	font-weight: 400;
 	font-size: 16px;
-	color: ${(props) => props.theme.text.colors.dark60};
+	color: ${(props) => props.theme.colors.dark60};
 `;
 const StartTitle = styled(Title)`
 	font-weight: 700;

@@ -5,19 +5,13 @@ import { images } from "../../data/imagesData";
 import INewGame from "../../interfaces/INewGame";
 import { NewGameContext } from "../../pages/NewGame";
 import Button from "../generics/Button/Button";
+import FullPage from "../generics/FullPage";
 import LabelText from "../generics/LabelText";
 import Modal from "../generics/Modal";
 import TextInput from "../generics/TextInput";
 import Title from "../generics/Title";
 import ImageSelectionBar from "../ImageSelectionBar";
 import SelectionBar from "../SelectionBar";
-
-const FullPage = styled.div`
-	display: flex;
-	height: 100%;
-	flex-direction: column;
-	justify-content: space-between;
-`;
 
 const BrowseImageContainer = styled.div`
 	display: flex;

@@ -1,5 +1,5 @@
 export default interface IButtonProps{
-    buttonStyle: string,
+    buttonStyle: "normal" | "secondary" | "delicate" | "negative",
     text: string,
     onClickHandler: () => void
 }
