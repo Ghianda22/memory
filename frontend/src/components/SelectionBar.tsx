@@ -1,11 +1,13 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import {ISelectionBarProps} from "../interfaces/ISelectionbarProps";
+import { ISelectionBarProps } from "../interfaces/ISelectionbarProps";
 import LabelText from "./generics/LabelText";
 
-const JustSomePadding = styled.div`
+const SelectionBarWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
 	padding-bottom: 13px;
-`
+`;
 
 const SelectionBarContainer = styled.div`
 	display: flex;
@@ -17,7 +19,7 @@ const SelectionBarContainer = styled.div`
 
 	height: fit-content;
 	padding: 2px;
-	background-color: ${(props) =>props.theme.colors.selector};
+	background-color: ${(props) => props.theme.colors.selector};
 	border-radius: 8px;
 `;
 const OptionContainer = styled.div<{ selected?: boolean }>`
@@ -55,7 +57,6 @@ const Separator = styled.div`
   border-radius: 0.5px;
 `;
 
-
 export default function SelectionBar(props: ISelectionBarProps) {
 	// state?
 	const { label, options } = props.selectionBar;
@@ -63,27 +64,26 @@ export default function SelectionBar(props: ISelectionBarProps) {
 
 	const renderedOptions = options.map((option, i) => {
 		const isSelected = option === selectedOption;
-			const next = options[i + 1];
-			const nextNotSelected = next != null && next !== selectedOption;
-			return (
-				<>
-					<OptionContainer
-						key={i}
-						selected={isSelected}
-						onClick={() => setOption(optionName, option)}
-					>
-						<OptionText>{option}</OptionText>
-					</OptionContainer>
-					{!isSelected && nextNotSelected && <Separator />}
-				</>
-			);
-
+		const next = options[i + 1];
+		const nextNotSelected = next != null && next !== selectedOption;
+		return (
+			<>
+				<OptionContainer
+					key={i}
+					selected={isSelected}
+					onClick={() => setOption(optionName, option)}
+				>
+					<OptionText>{option}</OptionText>
+				</OptionContainer>
+				{!isSelected && nextNotSelected && <Separator />}
+			</>
+		);
 	});
 
 	return (
-		<JustSomePadding>
+		<SelectionBarWrapper>
 			<LabelText>{label}</LabelText>
 			<SelectionBarContainer>{renderedOptions}</SelectionBarContainer>
-		</JustSomePadding>
+		</SelectionBarWrapper>
 	);
 }
