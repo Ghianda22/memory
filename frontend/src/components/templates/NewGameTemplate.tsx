@@ -40,7 +40,9 @@ const GameImageContainer = styled.div`
 export async function action({ request }: {request: Request}) {
 	const formData = await request.formData();
 	console.log(formData)
+	console.log(Object.fromEntries(formData))
 	console.log("ACTION!")
+	return formData;
 } 
 	
 	

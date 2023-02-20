@@ -4,7 +4,7 @@ import { IImageBarProps } from "../interfaces/ISelectionbarProps";
 import LabelText from "./generics/LabelText";
 
 // --- HORIZONTAL LAYOUT ---------------------------------------------------------------------------------
-const LayoutContainerX = styled.div`
+const LayoutContainerX = styled.ul`
 	display: flex;
 	flex-direction: row;
 	justify-content: left;
@@ -17,7 +17,7 @@ const LayoutContainerX = styled.div`
 	height: fit-content;
 	border-radius: 8px;
 `;
-const ImageContainerX = styled.div<{ selected: boolean }>`
+const ImageContainerX = styled.li<{ selected: boolean }>`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -62,6 +62,9 @@ const ImageContainerY = styled(ImageContainerX)`
 			border-radius: 7px;
 		`}
 `;
+const RadioOption = styled.input`
+	width: 0;
+`;
 
 export default function SelectionBar(props: IImageBarProps) {
 	// state?
@@ -77,6 +80,13 @@ export default function SelectionBar(props: IImageBarProps) {
 				onClick={() => setOption(optionName, option)}
 			>
 				<img src={option} alt={option.substring(12)} />
+				<RadioOption
+					type="radio"
+					id={option}
+					value={option}
+					name={props.selectionBar.label}
+					checked={isSelected}
+				/>
 			</ImageContainerX>
 		) : (
 			<ImageContainerY
@@ -85,6 +95,13 @@ export default function SelectionBar(props: IImageBarProps) {
 				onClick={() => setOption(optionName, option)}
 			>
 				<img src={option} alt={option.substring(12)} />
+				<RadioOption
+					type="radio"
+					id={option}
+					value={option}
+					name={props.selectionBar.label}
+					checked={isSelected}
+				/>
 			</ImageContainerY>
 		);
 	});
