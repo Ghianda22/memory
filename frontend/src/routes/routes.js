@@ -3,6 +3,7 @@ import NewGameTemplate, { action as formAction } from "../components/templates/N
 import SendInvitationsTemplate from "../components/templates/SendInvitationsTemplate";
 import ActiveGames from "../pages/ActiveGames";
 import CreateGame from "../pages/CreateGame";
+import LiveGame from "../pages/LiveGame";
 import NewGame from "../pages/NewGame";
 import SendInvitations from "../pages/SendInvitations";
 import StartGame from "../pages/StartGame";
@@ -30,8 +31,8 @@ export const routes = [
 		path: "/activegames",
 		element: <ActiveGames />
 	},
-	// {
-	//     path: "/livegame",
-	//     element:
-	// },
+	{
+	    path: "/livegame/:gameid",
+	    element: <LiveGame/>
+	},
 ];

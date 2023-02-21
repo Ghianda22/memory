@@ -71,8 +71,8 @@ export default function CreateGame() {
 		if (currentStep < creationSteps.length -1) {
 			if (newGame.mode === newGameData.selectionBar[1].options[0]){ // if it's private
 				navigate(creationSteps[currentStep + 1]);
-			}else navigate("/livegame")
-		}else navigate("/livegame")
+			}else navigate("/livegame/" + "635")
+		}else navigate("/livegame/" + "635")
 	};
 
 	const context = {
