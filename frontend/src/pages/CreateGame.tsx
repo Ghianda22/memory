@@ -38,8 +38,6 @@ export const CreateGameContext = React.createContext({
 export default function CreateGame() {
 	const navigate = useNavigate();
 	const currentStep = creationSteps.indexOf(useLocation().pathname);
-	// console.log(currentStep);
-	// console.log(creationSteps.indexOf(currentStep));
 
 	const [newGame, setNewGame] = useState<INewGame>({
 		numberOfPlayers: newGameData.selectionBar[0].options[1],
@@ -49,8 +47,7 @@ export default function CreateGame() {
 		gameImage: "",
 		gameName: "",
 	});
-	const [contacts, setContacts] = useState<string[]>([]);
-	// const [currentStep, setCurrentStep] = useState<number>(0);
+	const [contacts, setContacts] = useState<string[]>([])
 
 	const updateGameDetails = (name: string, value: string) => {
 		console.log(name + "  = " + value);
@@ -61,12 +58,7 @@ export default function CreateGame() {
 			contacts.map((val, i) => (i === parseInt(name) ? value : val))
 		);
 	};
-	// const navigateToNextStep = () => {
-	// 	if (newGame.mode === newGameData.selectionBar[1].options[0]) {
-	// 		// if it's private
-	// 		navigate("/newgame/sendinvitations");
-	// 	} else navigate("/livegame");
-	// };
+	//TODO fix the navigation to the new game with gameId
 	const navigateToNextStep = () => {
 		if (currentStep < creationSteps.length -1) {
 			if (newGame.mode === newGameData.selectionBar[1].options[0]){ // if it's private
