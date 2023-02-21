@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Outlet, useLocation, useNavigate} from "react-router-dom";
 import { data as newGameData } from "../data/newGameData";
 import { data as sendInvitationsData } from "../data/sendInvitationsData";
 import INewGame from "../interfaces/INewGame";

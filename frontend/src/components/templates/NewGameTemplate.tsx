@@ -1,12 +1,9 @@
 import { useState, useContext } from "react";
-import { Form, useNavigate } from "react-router-dom";
+import { Form } from "react-router-dom";
 import styled from "styled-components";
 import { images } from "../../data/imagesData";
-import INewGame from "../../interfaces/INewGame";
 import { CreateGameContext } from "../../pages/CreateGame";
-import { NewGameContext } from "../../pages/NewGame";
 import Button from "../generics/Button/Button";
-import FullPage from "../generics/FullPage";
 import LabelText from "../generics/LabelText";
 import Modal from "../generics/Modal";
 import TextInput from "../generics/TextInput";
