@@ -22,7 +22,7 @@ const SelectionBarContainer = styled.div`
 	background-color: ${(props) => props.theme.colors.selector};
 	border-radius: 8px;
 `;
-const OptionContainer = styled.div<{ selected?: boolean }>`
+const OptionContainer = styled.li<{ selected?: boolean }>`
 	padding: 6px 8px;
 
 	display: flex;
@@ -42,11 +42,14 @@ const OptionContainer = styled.div<{ selected?: boolean }>`
 			border-radius: 7px;
 		`}
 `;
-const OptionText = styled.p`
+const OptionText = styled.label`
 	font-family: "SF Pro Text";
 	font-weight: 400;
 	font-size: 13px;
 	line-height: 20px;
+`;
+const RadioOption = styled.input`
+	width: 0;
 `;
 //TODO: fix again this damn separator height
 // the div wrapping the return causes this somehow
@@ -61,6 +64,7 @@ export default function SelectionBar(props: ISelectionBarProps) {
 	// state?
 	const { label, options } = props.selectionBar;
 	const { optionName, selectedOption, setOption } = props;
+
 
 	const renderedOptions = options.map((option, i) => {
 		const isSelected = option === selectedOption;

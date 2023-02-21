@@ -3,6 +3,7 @@ export const images = {
 		"images/icons/lion-icon.png",
 		"images/icons/dog-icon.png",
 		"images/icons/tophat-icon.png",
+		"images/icons/dolphin-icon.png",
 		"images/icons/fire-icon.png",
 		"images/icons/globe-icon.png",
 		"images/icons/lock-icon.png",
