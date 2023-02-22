@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import styled from "styled-components";
+import { Form } from "react-router-dom";
 import { images } from "../../data/imagesData";
 import { CreateGameContext } from "../../pages/CreateGame";
 import Button from "../generics/Button/Button";
@@ -37,12 +37,13 @@ export default function SendInvitationsTemplate() {
 	}
 
 	return (
-		<FullPage>
+		<FullPage as={Form}>
 			<div>
 				<Title>{sendInvitations.pageData.title}</Title>
 				{renderInputs}
 			</div>
 			<Button
+				type="submit"
 				buttonStyle={"normal"}
 				text={sendInvitations.pageData.button}
 				onClickHandler={next}

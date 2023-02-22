@@ -41,7 +41,7 @@ export default function NewGameTemplate() {
 	return (
 		<>
 			<Title>{newGame.pageData.title}</Title>
-			<FullPage method="post">
+			<FullPage as={Form} method="post">
 				<SelectionBar
 					selectionBar={newGame.pageData.selectionBar[0]}
 					selectedOption={newGame.state.numberOfPlayers}

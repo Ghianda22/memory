@@ -9,7 +9,7 @@ const SelectionBarWrapper = styled.div`
 	padding-bottom: 13px;
 `;
 
-const SelectionBarContainer = styled.div`
+const SelectionBarContainer = styled.ul`
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -65,7 +65,6 @@ export default function SelectionBar(props: ISelectionBarProps) {
 	const { label, options } = props.selectionBar;
 	const { optionName, selectedOption, setOption } = props;
 
-
 	const renderedOptions = options.map((option, i) => {
 		const isSelected = option === selectedOption;
 		const next = options[i + 1];
@@ -77,6 +76,13 @@ export default function SelectionBar(props: ISelectionBarProps) {
 					selected={isSelected}
 					onClick={() => setOption(optionName, option)}
 				>
+					<RadioOption
+						type="radio"
+						id={option}
+						value={option}
+						name={props.selectionBar.label}
+						checked={isSelected}
+					/>
 					<OptionText>{option}</OptionText>
 				</OptionContainer>
 				{!isSelected && nextNotSelected && <Separator />}

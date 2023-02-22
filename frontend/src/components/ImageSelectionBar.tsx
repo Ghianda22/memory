@@ -73,10 +73,8 @@ const RadioOption = styled.input`
 `;
 
 export default function SelectionBar(props: IImageBarProps) {
-	// state?
 	const { label, options } = props.selectionBar;
 	const { displayOnXAxis, selectedOption, optionName, setOption } = props;
-	console.log(options);
 
 	const renderedOptions = options.map((option, i) => {
 		const isSelected = option === selectedOption;
