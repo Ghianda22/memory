@@ -3,10 +3,8 @@ import styled from "styled-components";
 import { data } from "../data/activeGamesData";
 import CalendarIcon from "./generics/icons/CalendarIcon";
 import ProfileIcon from "./generics/icons/ProfileIcon";
-import IGame from "../interfaces/IGame";
 import Button from "./generics/Button/Button";
 import UserIcon from "./generics/UserIcon";
-import IButtonProps from "../interfaces/IButtonProps";
 import IDtoGame from "../interfaces/IDtoGame";
 
 const CardContainer = styled.div<{ image: string }>`

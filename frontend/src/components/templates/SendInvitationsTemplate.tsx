@@ -3,16 +3,10 @@ import styled from "styled-components";
 import { images } from "../../data/imagesData";
 import { CreateGameContext } from "../../pages/CreateGame";
 import Button from "../generics/Button/Button";
+import FullPage from "../generics/FullPage";
 import LabelText from "../generics/LabelText";
 import TextInput from "../generics/TextInput";
 import Title from "../generics/Title";
-
-const FullPage = styled.div`
-	display: flex;
-	height: 100%;
-	flex-direction: column;
-	justify-content: space-between;
-`;
 
 export default function SendInvitationsTemplate() {
 	const { sendInvitations, next } = useContext(CreateGameContext);

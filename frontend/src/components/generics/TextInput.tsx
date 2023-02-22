@@ -22,6 +22,7 @@ const TextField = styled.input`
 	border: none;
 	font-weight: 500;
 	font-size: 16px;
+	background: none;	
 	color: ${(props) => props.theme.colors.dark60};
 
 	:focus-visible {

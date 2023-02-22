@@ -35,8 +35,12 @@ const ImageContainerX = styled.li<{ selected: boolean }>`
 			border-radius: 7px;
 		`}
 `;
-const OverflowHandler = styled.div`
-	overflow: auto;
+const OverflowHandler = styled.div<{ displayOnXAxis: boolean }>`
+	${(props) =>
+		!props.displayOnXAxis &&
+		css`
+			overflow: auto;
+		`}
 	padding-bottom: 10px;
 `;
 const ImageX = styled.img`
@@ -103,7 +107,7 @@ export default function SelectionBar(props: IImageBarProps) {
 	});
 
 	return (
-		<OverflowHandler>
+		<OverflowHandler displayOnXAxis={displayOnXAxis}>
 			<LabelText>{label}</LabelText>
 			{displayOnXAxis ? (
 				<LayoutContainerX>{renderedOptions}</LayoutContainerX>
