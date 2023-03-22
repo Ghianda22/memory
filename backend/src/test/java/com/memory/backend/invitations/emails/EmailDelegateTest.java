@@ -1,6 +1,5 @@
 package com.memory.backend.invitations.emails;
 
-import com.memory.backend.exceptions.InvalidEmailException;
 import com.memory.backend.invitations.emails.data.EmailRequestBean;
 import com.memory.backend.invitations.emails.data.EmailRequestBeanBuilder;
 import com.memory.backend.invitations.emails.data.EmailServiceBean;

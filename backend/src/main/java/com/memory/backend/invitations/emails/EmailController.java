@@ -1,6 +1,7 @@
 package com.memory.backend.invitations.emails;
 
 import com.memory.backend.invitations.emails.data.EmailRequestBean;
+import com.memory.backend.invitations.emails.data.EmailResponseBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,14 +29,18 @@ public class EmailController {
      * @return a response entity to confirm that everything was right, else error
      */
     @PostMapping("/send_email")
-    public ResponseEntity<Object> sendMailInvites (@RequestBody EmailRequestBean emailRequestBean){
-        try {
-            emailDelegate.handleEmails(emailRequestBean);
-            return new ResponseEntity<>("Invite was send successfully", HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY);
+    public ResponseEntity<String> sendMailInvites (@RequestBody EmailRequestBean emailRequestBean){
+        EmailResponseBean emailResponseBean = emailDelegate.handleEmails(emailRequestBean);
+        if(emailResponseBean.getFailedEmail().isEmpty()){
+            return ResponseEntity.ok().build();
         }
-        //return errors or 200
+        return ResponseEntity.badRequest().body(emailResponseBean.toString());
     }
 
 }
+
+/**
+ * opt 1: itero nel controller, chiamo il delegate x volte. Il delegate mi ritorna un emailResponse. Il body della response entity è un array delle emailresponse del delegate
+ * opt 2: itero nel delegate, chiamo il delegate 1 volta. Il delegate mi ritorna la risposta da inviare e non lancia eccezioni.
+ * EmailResponse è un oggetto con 1 solo campo come lista di EmailStatus. EmailStatus ha indirizzo mail e messaggio di stato
+ * */

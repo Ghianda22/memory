@@ -4,6 +4,7 @@ import com.memory.backend.invitations.SenderService;
 import com.memory.backend.invitations.emails.data.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class EmailSenderServiceImpl implements SenderService<Email> {
     private String sender;
 
     @Override
-    public void sendSimpleMessage(Email email) {
+    public void sendSimpleMessage(Email email) throws MailException {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(sender);
         message.setTo(email.getReceiverEmail());
