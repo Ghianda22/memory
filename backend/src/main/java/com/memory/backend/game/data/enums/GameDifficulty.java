@@ -2,9 +2,9 @@ package com.memory.backend.game.data.enums;
 
 public enum GameDifficulty {
 
-    EASY("Easy"),
-    MEDIUM("Medium"),
-    HARD("Hard");
+    EASY("8 (easy)"),
+    MEDIUM("16 (medium)"),
+    HARD("24 (hard)");
 
     public static GameDifficulty fromValue(String stringGameDifficulty){
         for(GameDifficulty gameDifficulty : GameDifficulty.values()) {
