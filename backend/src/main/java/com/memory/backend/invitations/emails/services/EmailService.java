@@ -4,10 +4,11 @@ import com.memory.backend.invitations.emails.data.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
-@Component
+@Service
 public class EmailService {
     private static final String baseUrl = "http://localhost:3000/livegame";
     private final EmailSenderServiceImpl emailSenderService;
@@ -36,6 +37,7 @@ public class EmailService {
                 .setReceiverEmail(emailServiceBean.getEmailAddress())
                 .setMsgBody("Ehy! You have been invited to " + emailServiceBean.getGameName() + " match" +
                         "\nHere is the link to access\n\n" + link)
+                .setSubject("Memory Game invitation")
                 .createEmail();
         try {
             emailSenderService.sendSimpleMessage(email);

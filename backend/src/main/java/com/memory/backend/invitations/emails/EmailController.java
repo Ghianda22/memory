@@ -29,7 +29,7 @@ public class EmailController {
      * @return a response entity to confirm that everything was right, else error
      */
     @PostMapping("/send_email")
-    public ResponseEntity<String> sendMailInvites (@RequestBody EmailRequestBean emailRequestBean){
+    public ResponseEntity<String> sendEmailInvitations (@RequestBody EmailRequestBean emailRequestBean){
         EmailResponseBean emailResponseBean = emailDelegate.handleEmails(emailRequestBean);
         if(emailResponseBean.getFailedEmail().isEmpty()){
             return ResponseEntity.ok().build();
