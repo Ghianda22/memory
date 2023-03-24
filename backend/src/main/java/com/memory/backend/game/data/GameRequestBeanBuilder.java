@@ -1,27 +1,24 @@
 package com.memory.backend.game.data;
 
-import com.memory.backend.game.data.enums.GameBgImage;
-import com.memory.backend.game.data.enums.GameDifficulty;
-
 public class GameRequestBeanBuilder {
-    private String gameName;
-    private String gameBgImage;
-    private String gameDifficulty;
+    private String name;
+    private String bgImage;
+    private String difficulty;
     private Integer maxNumberOfPlayers;
-    private Boolean isGamePublic;
+    private Boolean isPublic;
 
-    public GameRequestBeanBuilder setGameName(String gameName) {
-        this.gameName = gameName;
+    public GameRequestBeanBuilder setName(String name) {
+        this.name = name;
         return this;
     }
 
-    public GameRequestBeanBuilder setGameBgImage(String gameBgImage) {
-        this.gameBgImage = gameBgImage;
+    public GameRequestBeanBuilder setBgImage(String bgImage) {
+        this.bgImage = bgImage;
         return this;
     }
 
-    public GameRequestBeanBuilder setGameDifficulty(String gameDifficulty) {
-        this.gameDifficulty = gameDifficulty;
+    public GameRequestBeanBuilder setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
         return this;
     }
 
@@ -30,12 +27,12 @@ public class GameRequestBeanBuilder {
         return this;
     }
 
-    public GameRequestBeanBuilder setIsGamePublic(Boolean isGamePublic) {
-        this.isGamePublic = isGamePublic;
+    public GameRequestBeanBuilder setIsPublic(Boolean isPublic) {
+        this.isPublic = isPublic;
         return this;
     }
 
     public GameRequestBean createGame() {
-        return new GameRequestBean(gameName, gameBgImage, gameDifficulty, maxNumberOfPlayers, isGamePublic);
+        return new GameRequestBean(name, bgImage, difficulty, maxNumberOfPlayers, isPublic);
     }
 }

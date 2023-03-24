@@ -4,37 +4,39 @@ import com.memory.backend.game.data.enums.GameBgImage;
 import com.memory.backend.game.data.enums.GameDifficulty;
 import com.memory.backend.game.data.enums.GameStatus;
 
+import java.util.UUID;
+
 public class GameEntityBuilder {
-    private String gameId;
-    private GameStatus gameStatus;
-    private String gameName;
-    private GameBgImage gameBgImage;
-    private GameDifficulty gameDifficulty;
+    private UUID id;
+    private GameStatus status;
+    private String name;
+    private GameBgImage bgImage;
+    private GameDifficulty difficulty;
     private Integer maxNumberOfPlayers;
-    private Boolean isGamePublic;
+    private Boolean isPublic;
 
-    public GameEntityBuilder setGameId(String gameId) {
-        this.gameId = gameId;
+    public GameEntityBuilder setId(UUID id) {
+        this.id = id;
         return this;
     }
 
-    public GameEntityBuilder setGameStatus(GameStatus gameStatus) {
-        this.gameStatus = gameStatus;
+    public GameEntityBuilder setStatus(GameStatus status) {
+        this.status = status;
         return this;
     }
 
-    public GameEntityBuilder setGameName(String gameName) {
-        this.gameName = gameName;
+    public GameEntityBuilder setName(String name) {
+        this.name = name;
         return this;
     }
 
-    public GameEntityBuilder setGameBgImage(GameBgImage gameBgImage) {
-        this.gameBgImage = gameBgImage;
+    public GameEntityBuilder setBgImage(GameBgImage bgImage) {
+        this.bgImage = bgImage;
         return this;
     }
 
-    public GameEntityBuilder setGameDifficulty(GameDifficulty gameDifficulty) {
-        this.gameDifficulty = gameDifficulty;
+    public GameEntityBuilder setDifficulty(GameDifficulty difficulty) {
+        this.difficulty = difficulty;
         return this;
     }
 
@@ -43,12 +45,12 @@ public class GameEntityBuilder {
         return this;
     }
 
-    public GameEntityBuilder setIsGamePublic(Boolean isGamePublic) {
-        this.isGamePublic = isGamePublic;
+    public GameEntityBuilder setIsPublic(Boolean isPublic) {
+        this.isPublic = isPublic;
         return this;
     }
 
     public GameEntity createGame() {
-        return new GameEntity(gameId, gameStatus, gameName, gameBgImage, gameDifficulty, maxNumberOfPlayers, isGamePublic);
+        return new GameEntity(id, status, name, bgImage, difficulty, maxNumberOfPlayers, isPublic);
     }
 }

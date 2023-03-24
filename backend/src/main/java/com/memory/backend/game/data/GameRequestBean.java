@@ -1,41 +1,39 @@
 package com.memory.backend.game.data;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-
-public class GameRequestBean {
-    private String gameName;
-    private String gameBgImage;
-    private String gameDifficulty;
+public final class GameRequestBean {
+    private String name;
+    private String bgImage;
+    private String difficulty;
     private Integer maxNumberOfPlayers;
-    private Boolean isGamePublic;
+    private Boolean isPublic;
 
 
     public GameRequestBean() {}
-    public GameRequestBean(String gameName, String gameBgImage, String gameDifficulty, Integer maxNumberOfPlayers, Boolean isGamePublic) {
-        this.gameName = gameName;
-        this.gameBgImage = gameBgImage;
-        this.gameDifficulty = gameDifficulty;
+    public GameRequestBean(String name, String bgImage, String difficulty, Integer maxNumberOfPlayers, Boolean isPublic) {
+        this.name = name;
+        this.bgImage = bgImage;
+        this.difficulty = difficulty;
         this.maxNumberOfPlayers = maxNumberOfPlayers;
-        this.isGamePublic = isGamePublic;
+        this.isPublic = isPublic;
     }
 
-    public String getGameName() {
-        return gameName;
+    public String getName() {
+        return name;
     }
 
-    public String getGameBgImage() {
-        return gameBgImage;
+    public String getBgImage() {
+        return bgImage;
     }
 
-    public String getGameDifficulty() {
-        return gameDifficulty;
+    public String getDifficulty() {
+        return difficulty;
     }
 
     public Integer getMaxNumberOfPlayers() {
         return maxNumberOfPlayers;
     }
 
-    public Boolean getIsGamePublic() {
-        return isGamePublic;
+    public Boolean getIsPublic() {
+        return isPublic;
     }
 }
