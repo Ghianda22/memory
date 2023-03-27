@@ -1,6 +1,12 @@
 package com.memory.backend.invitations.emails;
 
 import com.memory.backend.invitations.emails.data.*;
+import com.memory.backend.invitations.emails.data.request.EmailListRequest;
+import com.memory.backend.invitations.emails.data.request.EmailRequestBean;
+import com.memory.backend.invitations.emails.data.response.EmailResponseBean;
+import com.memory.backend.invitations.emails.data.response.EmailResponseBeanBuilder;
+import com.memory.backend.invitations.emails.data.response.EmailStatusBean;
+import com.memory.backend.invitations.emails.data.response.EmailStatusBeanBuilder;
 import com.memory.backend.invitations.emails.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,10 +31,10 @@ public class EmailDelegate {
         EmailResponseBean emailResponseBean = new EmailResponseBeanBuilder()
                 .createEmailResponseBean();
 
-        for (String emailAddress : emailRequestBean.getEmailList()) {
-            if(isAddressInvalid(emailAddress)) {
+        for (EmailListRequest emailAddress : emailRequestBean.getEmailList()) {
+            if(isAddressInvalid(emailAddress.getEmailAddress())) {
                 EmailStatusBean emailStatusBean = new EmailStatusBeanBuilder()
-                        .setEmailAddress(emailAddress)
+                        .setEmailAddress(emailAddress.getEmailAddress())
                         .setStatusMessage("not a valid email address")
                         .createEmailStatusBean();
                 emailResponseBean.getFailedEmail().add(emailStatusBean);
@@ -36,7 +42,8 @@ public class EmailDelegate {
             }
 
             EmailServiceBean emailServiceBean = new EmailServiceBeanBuilder()
-                    .setEmailAddress(emailAddress)
+                    .setEmailAddress(emailAddress.getEmailAddress())
+                    .setAvatar(emailAddress.getAvatar())
                     .setGameId(emailRequestBean.getGameId())
                     .setGameName(emailRequestBean.getGameName())
                     .createEmailServiceBean();

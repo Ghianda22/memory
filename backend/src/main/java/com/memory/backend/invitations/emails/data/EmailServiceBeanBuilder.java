@@ -1,12 +1,20 @@
 package com.memory.backend.invitations.emails.data;
 
+import com.memory.backend.Icons;
+
 public class EmailServiceBeanBuilder {
     private String emailAddress;
+    private Icons avatar;
     private String gameId;
     private String gameName;
 
     public EmailServiceBeanBuilder setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+        return this;
+    }
+
+    public EmailServiceBeanBuilder setAvatar(Icons avatar) {
+        this.avatar = avatar;
         return this;
     }
 
@@ -21,6 +29,6 @@ public class EmailServiceBeanBuilder {
     }
 
     public EmailServiceBean createEmailServiceBean() {
-        return new EmailServiceBean(emailAddress, gameId, gameName);
+        return new EmailServiceBean(emailAddress, avatar, gameId, gameName);
     }
 }
