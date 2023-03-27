@@ -4,7 +4,6 @@ import com.memory.backend.game.data.*;
 import com.memory.backend.game.data.enums.GameBgImage;
 import com.memory.backend.game.data.enums.GameDifficulty;
 import com.memory.backend.game.data.enums.GameStatus;
-import com.memory.backend.game.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,16 +27,15 @@ public class GameDelegate {
     }
 
     public void insertNewGame(GameRequestBean gameRequestBean) throws IllegalArgumentException, NullPointerException{
-        checkGameName(gameRequestBean.getGameName());
+        checkGameName(gameRequestBean.getName());
         checkGameNumberOfPlayers(gameRequestBean.getMaxNumberOfPlayers());
         GameEntity newGameEntity = new GameEntityBuilder()
-                .setGameName(gameRequestBean.getGameName())
-                .setGameBgImage(GameBgImage.fromValue(gameRequestBean.getGameBgImage()))
-                .setGameDifficulty(GameDifficulty.fromValue(gameRequestBean.getGameDifficulty()))
+                .setName(gameRequestBean.getName())
+                .setBgImage(GameBgImage.fromValue(gameRequestBean.getBgImage()))
+                .setDifficulty(GameDifficulty.fromValue(gameRequestBean.getDifficulty()))
                 .setMaxNumberOfPlayers(gameRequestBean.getMaxNumberOfPlayers())
-                .setIsGamePublic(gameRequestBean.getIsGamePublic())
-                .setGameId(gameService.generateGameId())
-                .setGameStatus(GameStatus.PENDING)
+                .setIsPublic(gameRequestBean.getIsPublic())
+                .setStatus(GameStatus.PENDING)
                 .createGame();
         gameService.saveNewGame(newGameEntity);
     }
