@@ -7,7 +7,7 @@ import java.util.UUID;
 public class InvitationEntityBuilder {
     private UUID gameId;
     private Icons avatar;
-    private InvitationStatus status;
+    private InvitationStatus status = InvitationStatus.PENDING;
 
     public InvitationEntityBuilder setGameId(UUID gameId) {
         this.gameId = gameId;

@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.UUID;
 
 public interface InvitationRepository extends CrudRepository<InvitationEntity, UUID> {
-    public InvitationEntity findByGameId(UUID gameId);
+    InvitationEntity findByGameId(UUID gameId);
 }

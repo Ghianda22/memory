@@ -2,22 +2,21 @@ package com.memory.backend.invitations.emails.persistence;
 
 import com.memory.backend.BaseEntity;
 import com.memory.backend.Icons;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
 
 @Entity
+@Table(name = "Invitation")
 public class InvitationEntity extends BaseEntity {
     private UUID gameId;
     private Icons avatar;
-    private InvitationStatus status = InvitationStatus.PENDING;
+    private InvitationStatus status;
 
     public InvitationEntity() {
     }
+
 
     InvitationEntity(UUID gameId, Icons avatar, InvitationStatus status) {
         this.gameId = gameId;
