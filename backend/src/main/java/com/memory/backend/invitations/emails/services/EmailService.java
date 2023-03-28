@@ -7,6 +7,7 @@ import com.memory.backend.invitations.emails.data.response.EmailStatusBeanBuilde
 import com.memory.backend.invitations.emails.persistence.InvitationEntity;
 import com.memory.backend.invitations.emails.persistence.InvitationEntityBuilder;
 import com.memory.backend.invitations.emails.persistence.InvitationRepository;
+import com.memory.backend.invitations.emails.persistence.InvitationStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.stereotype.Service;
@@ -63,7 +64,10 @@ public class EmailService {
         if (savedInvitation.isEmpty()){
             throw new NotFoundOnDbException();
         }
-//        TODO: update the invitation changing its status to invited
+//        TODO: fix this aberrant infraction of the immutability of data
+        savedInvitation.get().setStatus(InvitationStatus.INVITED);
+        invitationRepository.save(savedInvitation.get());
+
     }
 
 

@@ -44,7 +44,8 @@ public class InvitationEntity extends BaseEntity {
         this.avatar = avatar;
     }
 
-    private void setStatus(InvitationStatus status) {
+//    TODO: absolutely fix this aberrant infraction of the immutability
+    public void setStatus(InvitationStatus status) {
         this.status = status;
     }
 }
