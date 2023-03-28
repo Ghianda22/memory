@@ -1,27 +1,77 @@
 package com.memory.backend.invitations.emails.services;
 
+import com.memory.backend.exceptions.NotFoundOnDbException;
 import com.memory.backend.invitations.emails.data.*;
+import com.memory.backend.invitations.emails.data.response.EmailStatusBean;
+import com.memory.backend.invitations.emails.data.response.EmailStatusBeanBuilder;
+import com.memory.backend.invitations.emails.persistence.InvitationEntity;
+import com.memory.backend.invitations.emails.persistence.InvitationEntityBuilder;
+import com.memory.backend.invitations.emails.persistence.InvitationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
 public class EmailService {
-    private static final String baseUrl = "http://localhost:3000/livegame";
+    private static final String BASE_URL = "http://localhost:3000/livegame/invitations";
+
     private final EmailSenderServiceImpl emailSenderService;
+    private final InvitationRepository invitationRepository;
 
     @Autowired
-    public EmailService(EmailSenderServiceImpl emailSenderService) {
+    public EmailService(EmailSenderServiceImpl emailSenderService, InvitationRepository invitationRepository) {
         this.emailSenderService = emailSenderService;
+        this.invitationRepository = invitationRepository;
     }
 
 
-    public String generateInvitationLink(String gameId) {
-        UUID uuid = UUID.randomUUID();
-        return String.format("%s/%s/%s", baseUrl, gameId, uuid);
+//    --- METHODS -------------------------------------------------------------------------------------------------
+
+    public EmailStatusBean handleInvitations(EmailServiceBean emailServiceBean){
+        InvitationEntity invitationEntity = new InvitationEntityBuilder()
+                .setGameId(emailServiceBean.getGameId())
+                .setAvatar(emailServiceBean.getAvatar())
+                .createInvitationEntity();
+        UUID uuidInvitation = saveInvitationOnDb(invitationEntity);
+        EmailStatusBean emailStatusBean = sendEmailInvitation(emailServiceBean, uuidInvitation);
+        if(emailStatusBean == null){
+            try {
+                updateInvitationSent(uuidInvitation);
+            } catch (NotFoundOnDbException e) {
+                return new EmailStatusBeanBuilder()
+                        .setEmailAddress(emailServiceBean.getEmailAddress())
+                        .setStatusMessage("Something went wrong with the db\n" + e.getMessage())
+                        .createEmailStatusBean();
+            }
+        }
+        return emailStatusBean;
+    }
+
+
+
+//  --- DB MANAGEMENT ---------------------------------------
+
+    UUID saveInvitationOnDb(InvitationEntity invitation){
+        return invitationRepository.save(invitation).getId();
+    }
+
+    void updateInvitationSent (UUID invitationId) throws NotFoundOnDbException {
+        Optional<InvitationEntity> savedInvitation = invitationRepository.findById(invitationId);
+        if (savedInvitation.isEmpty()){
+            throw new NotFoundOnDbException();
+        }
+//        TODO: update the invitation changing its status to invited
+    }
+
+
+
+//  --- EMAIL MANAGEMENT ---------------------------------------
+
+    public String generateInvitationLink(UUID invitationId) {
+        return "%s/%s".formatted(BASE_URL,invitationId);
     }
 
     /**
@@ -29,14 +79,15 @@ public class EmailService {
      * 2. set email message with the link
      * 3. call email sender service
      * @param emailServiceBean = object containing a single email address, the game id and the game name
+     * @param invitationId = uuid to identify the invitation
      */
-    public EmailStatusBean sendEmailInvitation(EmailServiceBean emailServiceBean) {
-        String link = generateInvitationLink(emailServiceBean.getGameId());
+    public EmailStatusBean sendEmailInvitation(EmailServiceBean emailServiceBean, UUID invitationId) {
+        String link = generateInvitationLink(invitationId);
 
         Email email = new EmailBuilder()
                 .setReceiverEmail(emailServiceBean.getEmailAddress())
-                .setMsgBody("Ehy! You have been invited to " + emailServiceBean.getGameName() + " match" +
-                        "\nHere is the link to access\n\n" + link)
+                .setMsgBody("Ehy! You have been invited to %s match\nHere is the link to access\n\n %s"
+                        .formatted(emailServiceBean.getGameName(), link))
                 .setSubject("Memory Game invitation")
                 .createEmail();
         try {
@@ -51,5 +102,6 @@ public class EmailService {
         }
 
     }
+
 
 }

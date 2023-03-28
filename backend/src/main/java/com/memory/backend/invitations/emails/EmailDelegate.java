@@ -47,7 +47,7 @@ public class EmailDelegate {
                     .setGameId(emailRequestBean.getGameId())
                     .setGameName(emailRequestBean.getGameName())
                     .createEmailServiceBean();
-            EmailStatusBean emailStatusBean = emailService.sendEmailInvitation(emailServiceBean);
+            EmailStatusBean emailStatusBean = emailService.handleInvitations(emailServiceBean);
             if(emailStatusBean != null) {
                 emailResponseBean.getFailedEmail().add(emailStatusBean);
             }
