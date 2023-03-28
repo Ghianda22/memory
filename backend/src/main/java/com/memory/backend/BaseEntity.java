@@ -1,15 +1,13 @@
 package com.memory.backend;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Version;
+import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.Instant;
 import java.util.UUID;
 
+@Entity
 public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
