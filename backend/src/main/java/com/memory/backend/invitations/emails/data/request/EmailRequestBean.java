@@ -1,19 +1,16 @@
 package com.memory.backend.invitations.emails.data.request;
 
-import com.memory.backend.Icons;
-
 import java.util.List;
+import java.util.UUID;
 
 public final class EmailRequestBean {
     private final List<EmailListRequest> emailList;
-    private final String gameId;
-    private final Icons avatar;
+    private final UUID gameId;
     private final String gameName; //unnecessary, can be queried from game table with gameId
 
-    EmailRequestBean(List<EmailListRequest> emailList, String gameId, Icons avatar, String gameName) {
+    EmailRequestBean(List<EmailListRequest> emailList, UUID gameId, String gameName) {
         this.emailList = emailList;
         this.gameId = gameId;
-        this.avatar = avatar;
         this.gameName = gameName;
     }
 
@@ -21,7 +18,7 @@ public final class EmailRequestBean {
         return emailList;
     }
 
-    public String getGameId() {
+    public UUID getGameId() {
         return gameId;
     }
 
@@ -29,7 +26,4 @@ public final class EmailRequestBean {
         return gameName;
     }
 
-    public Icons getAvatar() {
-        return avatar;
-    }
 }

@@ -3,11 +3,11 @@ package com.memory.backend.invitations.emails.data.request;
 import com.memory.backend.Icons;
 
 import java.util.List;
+import java.util.UUID;
 
 public class EmailRequestBeanBuilder {
     private List<EmailListRequest> emailList;
-    private String gameId;
-    private Icons avatar;
+    private UUID gameId;
     private String gameName;
 
     public EmailRequestBeanBuilder setEmailList(List<EmailListRequest> emailList) {
@@ -15,13 +15,8 @@ public class EmailRequestBeanBuilder {
         return this;
     }
 
-    public EmailRequestBeanBuilder setGameId(String gameId) {
+    public EmailRequestBeanBuilder setGameId(UUID gameId) {
         this.gameId = gameId;
-        return this;
-    }
-
-    public EmailRequestBeanBuilder setAvatar(Icons avatar) {
-        this.avatar = avatar;
         return this;
     }
 
@@ -31,6 +26,6 @@ public class EmailRequestBeanBuilder {
     }
 
     public EmailRequestBean createEmailRequestBean() {
-        return new EmailRequestBean(emailList, gameId, avatar, gameName);
+        return new EmailRequestBean(emailList, gameId, gameName);
     }
 }

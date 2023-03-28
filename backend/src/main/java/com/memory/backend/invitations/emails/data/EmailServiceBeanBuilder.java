@@ -2,10 +2,12 @@ package com.memory.backend.invitations.emails.data;
 
 import com.memory.backend.Icons;
 
+import java.util.UUID;
+
 public class EmailServiceBeanBuilder {
     private String emailAddress;
     private Icons avatar;
-    private String gameId;
+    private UUID gameId;
     private String gameName;
 
     public EmailServiceBeanBuilder setEmailAddress(String emailAddress) {
@@ -18,7 +20,7 @@ public class EmailServiceBeanBuilder {
         return this;
     }
 
-    public EmailServiceBeanBuilder setGameId(String gameId) {
+    public EmailServiceBeanBuilder setGameId(UUID gameId) {
         this.gameId = gameId;
         return this;
     }
