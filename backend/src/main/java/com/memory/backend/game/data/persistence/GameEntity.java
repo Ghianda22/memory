@@ -1,4 +1,4 @@
-package com.memory.backend.game.data;
+package com.memory.backend.game.data.persistence;
 
 import com.memory.backend.BaseEntity;
 import com.memory.backend.game.data.enums.GameBgImage;

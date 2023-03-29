@@ -1,4 +1,4 @@
-package com.memory.backend.game.data;
+package com.memory.backend.game.data.request;
 
 public class GameRequestBeanBuilder {
     private String name;

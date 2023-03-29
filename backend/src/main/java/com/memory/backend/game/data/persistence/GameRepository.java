@@ -1,6 +1,5 @@
-package com.memory.backend.game;
+package com.memory.backend.game.data.persistence;
 
-import com.memory.backend.game.data.GameEntity;
 import com.memory.backend.game.data.enums.GameStatus;
 import org.springframework.data.repository.CrudRepository;
 

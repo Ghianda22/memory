@@ -1,4 +1,4 @@
-package com.memory.backend.invitations.emails.persistence;
+package com.memory.backend.invitations.emails.data.persistence;
 
 import org.springframework.data.repository.CrudRepository;
 

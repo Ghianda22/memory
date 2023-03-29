@@ -1,10 +1,8 @@
-package com.memory.backend.game.data;
+package com.memory.backend.game.data.persistence;
 
 import com.memory.backend.game.data.enums.GameBgImage;
 import com.memory.backend.game.data.enums.GameDifficulty;
 import com.memory.backend.game.data.enums.GameStatus;
-
-import java.util.UUID;
 
 public class GameEntityBuilder {
     private GameStatus status;
