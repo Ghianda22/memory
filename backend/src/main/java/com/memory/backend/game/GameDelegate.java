@@ -28,13 +28,15 @@ public class GameDelegate {
         this.gameService = gameService;
     }
 
-    //    check if the new game data are correct then create a new game and save it in the db
+//    --- GET ACTIVE GAMES ----------------------------------------------------
     public GameResponseBean getActiveGames(){
         return new GameResponseBeanBuilder()
                 .setActiveGames(gameService.getActiveGames())
                 .createGameResponseBean();
     }
 
+
+//    --- INSERT NEW GAMES ----------------------------------------------------------------------
     public NewGameResponseBean insertNewGame(GameRequestBean gameRequestBean) throws IllegalArgumentException, NullPointerException{
         checkGameName(gameRequestBean.getName());
         checkGameNumberOfPlayers(gameRequestBean.getMaxNumberOfPlayers());
@@ -51,9 +53,11 @@ public class GameDelegate {
                 .setId(newGameId)
                 .setMessage("The game has been added to the db")
                 .createNewGameResponseBean();
-
     }
 
+
+//    TODO: convert string interpolation into string.format
+//    TODO: assign a min max values for the name too
     void checkGameName(String gameName) throws NullPointerException, IllegalArgumentException{
         if (gameName.isEmpty()){
             throw new NullPointerException("The game name can't be empty");

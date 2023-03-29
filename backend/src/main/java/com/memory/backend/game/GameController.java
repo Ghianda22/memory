@@ -2,6 +2,7 @@ package com.memory.backend.game;
 
 
 import com.memory.backend.game.data.request.GameRequestBean;
+import com.memory.backend.game.data.response.GameResponseBean;
 import com.memory.backend.game.data.response.NewGameResponseBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +22,7 @@ public class GameController {
 
 
     @GetMapping("/activegames")
-    public ResponseEntity<Object> showActiveGames(){
+    public ResponseEntity<GameResponseBean> showActiveGames(){
         return ResponseEntity.ok()
                 .body(gameDelegate.getActiveGames());
     }
