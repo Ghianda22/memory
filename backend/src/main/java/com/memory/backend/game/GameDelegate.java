@@ -4,6 +4,7 @@ import com.memory.backend.game.data.*;
 import com.memory.backend.game.data.enums.GameBgImage;
 import com.memory.backend.game.data.enums.GameDifficulty;
 import com.memory.backend.game.data.enums.GameStatus;
+import com.memory.backend.game.data.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

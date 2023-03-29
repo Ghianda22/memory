@@ -8,5 +8,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface GameRepository extends CrudRepository<GameEntity, UUID> {
-    public List<GameEntity> findAllByGameStatusAndIsGamePublicTrue(GameStatus gameStatus);
+    List<GameEntity> findAllByStatusAndIsPublicTrue(GameStatus gameStatus);
 }
