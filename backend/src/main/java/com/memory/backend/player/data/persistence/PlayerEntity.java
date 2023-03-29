@@ -11,13 +11,13 @@ public class PlayerEntity extends BaseEntity {
     private UUID gameId;
     private Icons avatar;
     private Integer score;
-    private boolean isInGame;
-    private boolean isTurnPlayer;
+    private Boolean isInGame;
+    private Boolean isTurnPlayer;
 
     public PlayerEntity() {
     }
 
-    PlayerEntity(UUID gameId, Icons avatar, Integer score, boolean isInGame, boolean isTurnPlayer) {
+    PlayerEntity(UUID gameId, Icons avatar, Integer score, Boolean isInGame, Boolean isTurnPlayer) {
         this.gameId = gameId;
         this.avatar = avatar;
         this.score = score;
@@ -37,11 +37,11 @@ public class PlayerEntity extends BaseEntity {
         return score;
     }
 
-    public boolean getIsInGame() {
+    public Boolean getIsInGame() {
         return isInGame;
     }
 
-    public boolean getIsTurnPlayer() {
+    public Boolean getIsTurnPlayer() {
         return isTurnPlayer;
     }
 
@@ -54,10 +54,10 @@ public class PlayerEntity extends BaseEntity {
     private void setScore(Integer score) {
         this.score = score;
     }
-    private void setInGame(boolean inGame) {
+    private void setInGame(Boolean inGame) {
         isInGame = inGame;
     }
-    private void setTurnPlayer(boolean turnPlayer) {
+    private void setTurnPlayer(Boolean turnPlayer) {
         isTurnPlayer = turnPlayer;
     }
 }

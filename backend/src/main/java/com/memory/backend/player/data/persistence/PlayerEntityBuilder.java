@@ -8,8 +8,8 @@ public class PlayerEntityBuilder {
     private UUID gameId;
     private Icons avatar;
     private Integer score;
-    private boolean isInGame;
-    private boolean isTurnPlayer;
+    private Boolean isInGame;
+    private Boolean isTurnPlayer;
 
     public PlayerEntityBuilder setGameId(UUID gameId) {
         this.gameId = gameId;
@@ -26,12 +26,12 @@ public class PlayerEntityBuilder {
         return this;
     }
 
-    public PlayerEntityBuilder setIsInGame(boolean isInGame) {
+    public PlayerEntityBuilder setIsInGame(Boolean isInGame) {
         this.isInGame = isInGame;
         return this;
     }
 
-    public PlayerEntityBuilder setIsTurnPlayer(boolean isTurnPlayer) {
+    public PlayerEntityBuilder setIsTurnPlayer(Boolean isTurnPlayer) {
         this.isTurnPlayer = isTurnPlayer;
         return this;
     }

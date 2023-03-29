@@ -56,7 +56,7 @@ public class EmailDelegate {
         return emailResponseBean;
     }
 
-    boolean isAddressInvalid(String email){
+    Boolean isAddressInvalid(String email){
         return !Pattern.compile(EMAIL_REGEX_PATTERN)
                 .matcher(email)
                 .matches();
