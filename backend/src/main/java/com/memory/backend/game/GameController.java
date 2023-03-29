@@ -1,7 +1,8 @@
 package com.memory.backend.game;
 
 
-import com.memory.backend.game.data.GameRequestBean;
+import com.memory.backend.game.data.request.GameRequestBean;
+import com.memory.backend.game.data.response.NewGameResponseBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,12 +27,12 @@ public class GameController {
     }
 
     @PostMapping("/newgame/create")
-    public ResponseEntity<String> createNewGame(@RequestBody GameRequestBean gameRequestBean){
+    public ResponseEntity<NewGameResponseBean> createNewGame(@RequestBody GameRequestBean gameRequestBean){
         try{
-            gameDelegate.insertNewGame(gameRequestBean);
-            return new ResponseEntity<>("The game has been added to the db", HttpStatus.CREATED);
+            NewGameResponseBean newGameResponse = gameDelegate.insertNewGame(gameRequestBean);
+            return new ResponseEntity<>(newGameResponse, HttpStatus.CREATED);
         }catch (Exception e){
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().build();
         }
     }
 

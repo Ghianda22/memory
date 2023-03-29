@@ -1,12 +1,20 @@
 package com.memory.backend.game;
 
-import com.memory.backend.game.data.*;
 import com.memory.backend.game.data.enums.GameBgImage;
 import com.memory.backend.game.data.enums.GameDifficulty;
 import com.memory.backend.game.data.enums.GameStatus;
-import com.memory.backend.game.data.services.GameService;
+import com.memory.backend.game.data.persistence.GameEntity;
+import com.memory.backend.game.data.persistence.GameEntityBuilder;
+import com.memory.backend.game.data.request.GameRequestBean;
+import com.memory.backend.game.data.response.GameResponseBean;
+import com.memory.backend.game.data.response.GameResponseBeanBuilder;
+import com.memory.backend.game.data.response.NewGameResponseBean;
+import com.memory.backend.game.data.response.NewGameResponseBeanBuilder;
+import com.memory.backend.game.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.UUID;
 
 @Component
 public class GameDelegate {
@@ -27,7 +35,7 @@ public class GameDelegate {
                 .createGameResponseBean();
     }
 
-    public void insertNewGame(GameRequestBean gameRequestBean) throws IllegalArgumentException, NullPointerException{
+    public NewGameResponseBean insertNewGame(GameRequestBean gameRequestBean) throws IllegalArgumentException, NullPointerException{
         checkGameName(gameRequestBean.getName());
         checkGameNumberOfPlayers(gameRequestBean.getMaxNumberOfPlayers());
         GameEntity newGameEntity = new GameEntityBuilder()
@@ -38,7 +46,12 @@ public class GameDelegate {
                 .setIsPublic(gameRequestBean.getIsPublic())
                 .setStatus(GameStatus.PENDING)
                 .createGame();
-        gameService.saveNewGame(newGameEntity);
+        UUID newGameId = gameService.saveNewGame(newGameEntity);
+        return new NewGameResponseBeanBuilder()
+                .setId(newGameId)
+                .setMessage("The game has been added to the db")
+                .createNewGameResponseBean();
+
     }
 
     void checkGameName(String gameName) throws NullPointerException, IllegalArgumentException{

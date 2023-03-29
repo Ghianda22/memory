@@ -1,12 +1,13 @@
-package com.memory.backend.game.data.services;
+package com.memory.backend.game.services;
 
-import com.memory.backend.game.GameRepository;
-import com.memory.backend.game.data.GameEntity;
+import com.memory.backend.game.data.persistence.GameRepository;
+import com.memory.backend.game.data.persistence.GameEntity;
 import com.memory.backend.game.data.enums.GameStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class GameService {
@@ -22,8 +23,8 @@ public class GameService {
         return gameRepository.findAllByStatusAndIsPublicTrue(GameStatus.PENDING);
     }
 
-    public void saveNewGame(GameEntity newGame){
-        gameRepository.save(newGame);
+    public UUID saveNewGame(GameEntity newGame){
+        return gameRepository.save(newGame).getId();
     }
 
 
