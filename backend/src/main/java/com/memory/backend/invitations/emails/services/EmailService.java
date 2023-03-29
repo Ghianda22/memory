@@ -66,8 +66,7 @@ public class EmailService {
         }
 //        TODO: fix this aberrant infraction of the immutability of data
         savedInvitation.get().setStatus(InvitationStatus.INVITED);
-        invitationRepository.save(savedInvitation.get());
-
+        invitationRepository.flush();
     }
 
 
