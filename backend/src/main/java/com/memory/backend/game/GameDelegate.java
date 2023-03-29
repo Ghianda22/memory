@@ -40,8 +40,8 @@ public class GameDelegate {
         checkGameNumberOfPlayers(gameRequestBean.getMaxNumberOfPlayers());
         GameEntity newGameEntity = new GameEntityBuilder()
                 .setName(gameRequestBean.getName())
-                .setBgImage(GameBgImage.fromValue(gameRequestBean.getBgImage()))
-                .setDifficulty(GameDifficulty.fromValue(gameRequestBean.getDifficulty()))
+                .setBgImage(gameRequestBean.getBgImage())
+                .setDifficulty(gameRequestBean.getDifficulty())
                 .setMaxNumberOfPlayers(gameRequestBean.getMaxNumberOfPlayers())
                 .setIsPublic(gameRequestBean.getIsPublic())
                 .setStatus(GameStatus.PENDING)

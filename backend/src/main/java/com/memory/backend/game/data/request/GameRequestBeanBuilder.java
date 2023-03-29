@@ -1,9 +1,12 @@
 package com.memory.backend.game.data.request;
 
+import com.memory.backend.game.data.enums.GameBgImage;
+import com.memory.backend.game.data.enums.GameDifficulty;
+
 public class GameRequestBeanBuilder {
     private String name;
-    private String bgImage;
-    private String difficulty;
+    private GameBgImage bgImage;
+    private GameDifficulty difficulty;
     private Integer maxNumberOfPlayers;
     private Boolean isPublic;
 
@@ -12,12 +15,12 @@ public class GameRequestBeanBuilder {
         return this;
     }
 
-    public GameRequestBeanBuilder setBgImage(String bgImage) {
+    public GameRequestBeanBuilder setBgImage(GameBgImage bgImage) {
         this.bgImage = bgImage;
         return this;
     }
 
-    public GameRequestBeanBuilder setDifficulty(String difficulty) {
+    public GameRequestBeanBuilder setDifficulty(GameDifficulty difficulty) {
         this.difficulty = difficulty;
         return this;
     }
