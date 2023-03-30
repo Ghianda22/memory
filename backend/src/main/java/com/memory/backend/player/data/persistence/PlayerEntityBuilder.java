@@ -10,6 +10,7 @@ public class PlayerEntityBuilder {
     private Integer score = 0;
     private Boolean isInGame = true;
     private Boolean isTurnPlayer;
+    private Boolean isAdmin = false;
 
     public PlayerEntityBuilder setGameId(UUID gameId) {
         this.gameId = gameId;
@@ -36,7 +37,12 @@ public class PlayerEntityBuilder {
         return this;
     }
 
+    public PlayerEntityBuilder setIsAdmin(Boolean admin) {
+        isAdmin = admin;
+        return this;
+    }
+
     public PlayerEntity createPlayerEntity() {
-        return new PlayerEntity(gameId, avatar, score, isInGame, isTurnPlayer);
+        return new PlayerEntity(gameId, avatar, score, isInGame, isTurnPlayer, isAdmin);
     }
 }
