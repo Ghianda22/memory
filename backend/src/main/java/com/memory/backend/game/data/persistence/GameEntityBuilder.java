@@ -5,7 +5,7 @@ import com.memory.backend.game.data.enums.GameDifficulty;
 import com.memory.backend.game.data.enums.GameStatus;
 
 public class GameEntityBuilder {
-    private GameStatus status;
+    private GameStatus status = GameStatus.CREATED;
     private String name;
     private GameBgImage bgImage;
     private GameDifficulty difficulty;

@@ -6,9 +6,9 @@ import java.util.UUID;
 
 public class PlayerEntityBuilder {
     private UUID gameId;
-    private Icons avatar;
-    private Integer score;
-    private Boolean isInGame;
+    private Icons avatar = Icons.getRandomIcon();
+    private Integer score = 0;
+    private Boolean isInGame = true;
     private Boolean isTurnPlayer;
 
     public PlayerEntityBuilder setGameId(UUID gameId) {

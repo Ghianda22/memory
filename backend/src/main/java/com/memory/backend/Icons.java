@@ -1,5 +1,7 @@
 package com.memory.backend;
 
+import java.util.Random;
+
 public enum Icons {
     LION,
     DOG,
@@ -14,5 +16,11 @@ public enum Icons {
     SILLY,
     SUNFLOWER,
     TARGET,
-    UMBRELLA
+    UMBRELLA;
+
+    private static final Random RANDOM = new Random();
+
+    public static Icons getRandomIcon() {
+        return values()[RANDOM.nextInt(values().length)];
+    }
 }
