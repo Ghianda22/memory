@@ -40,15 +40,8 @@ public class GameDelegate {
     public NewGameResponseBean insertNewGame(GameRequestBean gameRequestBean) throws IllegalArgumentException, NullPointerException{
         checkGameName(gameRequestBean.getName());
         checkGameNumberOfPlayers(gameRequestBean.getMaxNumberOfPlayers());
-        GameEntity newGameEntity = new GameEntityBuilder()
-                .setName(gameRequestBean.getName())
-                .setBgImage(gameRequestBean.getBgImage())
-                .setDifficulty(gameRequestBean.getDifficulty())
-                .setMaxNumberOfPlayers(gameRequestBean.getMaxNumberOfPlayers())
-                .setIsPublic(gameRequestBean.getIsPublic())
-                .setStatus(GameStatus.PENDING)
-                .createGame();
-        UUID newGameId = gameService.saveNewGame(newGameEntity);
+
+        UUID newGameId = gameService.saveNewGame(gameRequestBean);
         return new NewGameResponseBeanBuilder()
                 .setId(newGameId)
                 .setMessage("The game has been added to the db")
