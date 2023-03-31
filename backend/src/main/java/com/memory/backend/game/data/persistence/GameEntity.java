@@ -53,7 +53,7 @@ public class GameEntity extends BaseEntity {
         return isPublic;
     }
 
-    private void setStatus(GameStatus status) {
+    public void setStatus(GameStatus status) {
         this.status = status;
     }
 

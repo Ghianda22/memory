@@ -1,6 +1,7 @@
 package com.memory.backend.player.service;
 
 import com.memory.backend.Icons;
+import com.memory.backend.exceptions.NotFoundOnDbException;
 import com.memory.backend.game.data.enums.GameStatus;
 import com.memory.backend.game.services.GameService;
 import com.memory.backend.player.data.persistence.PlayerEntity;
@@ -30,19 +31,20 @@ public class PlayerService {
         PlayerEntity player = new PlayerEntityBuilder()
                 .setGameId(gameId)
                 .createPlayerEntity();
-        return playerRepository.save(player).getId();
+        return playerRepository.saveAndFlush(player).getId();
     }
 
-    public UUID saveAdmin(UUID gameId, Icons adminAvatar) {
+    public UUID saveAdmin(UUID gameId, Icons adminAvatar) throws NotFoundOnDbException {
         PlayerEntity player = new PlayerEntityBuilder()
                 .setGameId(gameId)
                 .setAvatar(adminAvatar)
                 .setIsAdmin(true)
                 .createPlayerEntity();
-        UUID adminId = playerRepository.save(player).getId();
+        UUID adminId = playerRepository.saveAndFlush(player).getId();
         if(adminId != null){
             gameService.updateGameStatusById(gameId);
         }
+        return adminId;
     }
 
     public List<PlayerEntity> getPlayersInGameWithId(UUID gameId) {
@@ -75,10 +77,7 @@ public class PlayerService {
         if(playerInGame.isEmpty()) {
             return null;
         }
-        if (playerInGame.size() == gameCapacity){
-            return false;
-        }
-        return false;
+        return playerInGame.size() >= gameCapacity;
 
     }
 

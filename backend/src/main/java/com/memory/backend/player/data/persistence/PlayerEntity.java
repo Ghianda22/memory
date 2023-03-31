@@ -52,13 +52,13 @@ public class PlayerEntity extends BaseEntity {
     private void setAvatar(Icons avatar) {
         this.avatar = avatar;
     }
-    private void setScore(Integer score) {
+    public void setScore(Integer score) {
         this.score = score;
     }
-    private void setInGame(Boolean inGame) {
+    public void setInGame(Boolean inGame) {
         isInGame = inGame;
     }
-    private void setTurnPlayer(Boolean turnPlayer) {
+    public void setTurnPlayer(Boolean turnPlayer) {
         isTurnPlayer = turnPlayer;
     }
     private void setAdmin(Boolean admin) {

@@ -1,10 +1,12 @@
 package com.memory.backend.game.services;
 
+import com.memory.backend.exceptions.NotFoundOnDbException;
 import com.memory.backend.game.data.persistence.GameEntityBuilder;
 import com.memory.backend.game.data.persistence.GameRepository;
 import com.memory.backend.game.data.persistence.GameEntity;
 import com.memory.backend.game.data.enums.GameStatus;
 import com.memory.backend.game.data.request.GameRequestBean;
+import com.memory.backend.invitations.emails.data.persistence.InvitationStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,8 +65,14 @@ public class GameService {
     }
 
     //    --- UPDATE
-    public void updateGameStatusById(UUID gameId) {
+    public void updateGameStatusById(UUID gameId) throws NotFoundOnDbException {
         Optional<GameEntity> gameEntityOptional = gameRepository.findById(gameId);
+        if (gameEntityOptional.isEmpty()){
+            throw new NotFoundOnDbException();
+        }
+//        TODO: fix this aberrant infraction of the immutability of data
+        gameEntityOptional.get().setStatus(GameStatus.PENDING);
+        gameRepository.flush();
         
     }
 

@@ -1,5 +1,6 @@
 package com.memory.backend.player;
 
+import com.memory.backend.exceptions.NotFoundOnDbException;
 import com.memory.backend.game.services.GameService;
 import com.memory.backend.player.data.persistence.PlayerEntity;
 import com.memory.backend.player.data.request.AdminRegistrationRequestBean;
@@ -42,7 +43,17 @@ public class PlayerDelegate {
                             .createPlayerResponseBean(),
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        UUID playerId = playerService.saveAdmin(gameId, adminRegistrationRequestBean.getAvatar());
+        UUID playerId = null;
+        try {
+            playerId = playerService.saveAdmin(gameId, adminRegistrationRequestBean.getAvatar());
+        } catch (NotFoundOnDbException e) {
+            return new ResponseEntity<>(
+                    new PlayerResponseBeanBuilder()
+                            .setId(gameId)
+                            .setMessage("Game not found")
+                            .createPlayerResponseBean(),
+                    HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(
                 new PlayerResponseBeanBuilder()
                         .setId(playerId)
