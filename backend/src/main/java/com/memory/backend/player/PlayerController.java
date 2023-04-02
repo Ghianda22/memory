@@ -11,8 +11,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("livegame")
 public class PlayerController {
-
-    private PlayerDelegate playerDelegate;
+    private final PlayerDelegate playerDelegate;
 
     @Autowired
     public PlayerController(PlayerDelegate playerDelegate) {
@@ -20,7 +19,7 @@ public class PlayerController {
     }
 
     @GetMapping("{gameId}")
-    public ResponseEntity<PlayerResponseBean> reigsterPlayer(@PathVariable(value = "gameId") UUID gameId) {
+    public ResponseEntity<PlayerResponseBean> registerPlayer(@PathVariable(value = "gameId") UUID gameId) {
         return playerDelegate.admitPlayerToGameWithId(gameId);
     }
 
