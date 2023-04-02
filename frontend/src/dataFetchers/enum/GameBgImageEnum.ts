@@ -1,6 +1,6 @@
 export enum GameBgImage {
 	BRAIN,
-    EINSTEIN,
-    ELEPHANT,
-    LION
+	EINSTEIN,
+	ELEPHANT,
+	LION,
 }
