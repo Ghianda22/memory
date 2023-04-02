@@ -37,11 +37,11 @@ public class CardEntity extends BaseEntity {
         return orderInDeck;
     }
 
-    public Boolean getFaceUp() {
+    public Boolean getIsFaceUp() {
         return isFaceUp;
     }
 
-    public Boolean getCollected() {
+    public Boolean getIsCollected() {
         return isCollected;
     }
 
@@ -58,11 +58,11 @@ public class CardEntity extends BaseEntity {
         this.orderInDeck = orderInDeck;
     }
 
-    public void setFaceUp(Boolean faceUp) {
+    public void setIsFaceUp(Boolean faceUp) {
         isFaceUp = faceUp;
     }
 
-    public void setCollected(Boolean collected) {
+    public void setIsCollected(Boolean collected) {
         isCollected = collected;
     }
 }

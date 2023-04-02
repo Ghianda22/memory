@@ -8,8 +8,8 @@ public class CardEntityBuilder {
     private UUID gameId;
     private Icons icon;
     private Integer orderInDeck;
-    private Boolean isFaceUp;
-    private Boolean isCollected;
+    private Boolean isFaceUp = false;
+    private Boolean isCollected = false;
 
     public CardEntityBuilder setGameId(UUID gameId) {
         this.gameId = gameId;
