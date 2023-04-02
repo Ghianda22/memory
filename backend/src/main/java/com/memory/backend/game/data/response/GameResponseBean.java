@@ -1,4 +1,6 @@
-package com.memory.backend.game.data;
+package com.memory.backend.game.data.response;
+
+import com.memory.backend.game.data.persistence.GameEntity;
 
 import java.util.List;
 

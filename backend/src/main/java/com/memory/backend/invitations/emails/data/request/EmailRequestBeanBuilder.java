@@ -1,18 +1,21 @@
-package com.memory.backend.invitations.emails.data;
+package com.memory.backend.invitations.emails.data.request;
+
+import com.memory.backend.Icons;
 
 import java.util.List;
+import java.util.UUID;
 
 public class EmailRequestBeanBuilder {
-    private List<String> emailList;
-    private String gameId;
+    private List<EmailListRequest> emailList;
+    private UUID gameId;
     private String gameName;
 
-    public EmailRequestBeanBuilder setEmailList(List<String> emailList) {
+    public EmailRequestBeanBuilder setEmailList(List<EmailListRequest> emailList) {
         this.emailList = emailList;
         return this;
     }
 
-    public EmailRequestBeanBuilder setGameId(String gameId) {
+    public EmailRequestBeanBuilder setGameId(UUID gameId) {
         this.gameId = gameId;
         return this;
     }

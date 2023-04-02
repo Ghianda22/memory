@@ -1,4 +1,4 @@
-package com.memory.backend.invitations.emails.data;
+package com.memory.backend.invitations.emails.data.response;
 
 public class EmailStatusBeanBuilder {
     private String emailAddress;

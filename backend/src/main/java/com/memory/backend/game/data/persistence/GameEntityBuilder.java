@@ -1,24 +1,16 @@
-package com.memory.backend.game.data;
+package com.memory.backend.game.data.persistence;
 
 import com.memory.backend.game.data.enums.GameBgImage;
 import com.memory.backend.game.data.enums.GameDifficulty;
 import com.memory.backend.game.data.enums.GameStatus;
 
-import java.util.UUID;
-
 public class GameEntityBuilder {
-    private UUID id;
-    private GameStatus status;
+    private GameStatus status = GameStatus.CREATED;
     private String name;
     private GameBgImage bgImage;
     private GameDifficulty difficulty;
     private Integer maxNumberOfPlayers;
     private Boolean isPublic;
-
-    public GameEntityBuilder setId(UUID id) {
-        this.id = id;
-        return this;
-    }
 
     public GameEntityBuilder setStatus(GameStatus status) {
         this.status = status;
@@ -51,6 +43,6 @@ public class GameEntityBuilder {
     }
 
     public GameEntity createGame() {
-        return new GameEntity(id, status, name, bgImage, difficulty, maxNumberOfPlayers, isPublic);
+        return new GameEntity(status, name, bgImage, difficulty, maxNumberOfPlayers, isPublic);
     }
 }

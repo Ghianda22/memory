@@ -1,7 +1,8 @@
 package com.memory.backend.game.data.enums;
 
 public enum GameStatus {
-    PENDING,
+    CREATED, // game just created but not waiting for players
+    PENDING, // the author entered the game and it's waiting for players
     IN_PROGRESS,
     FINISHED
 }

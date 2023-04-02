@@ -1,11 +1,11 @@
-package com.memory.backend.invitations.emails.data;
+package com.memory.backend.invitations.emails.data.response;
 
 import java.util.ArrayList;
 
 public final class EmailResponseBean {
     private final ArrayList<EmailStatusBean> failedEmail;
 
-    public EmailResponseBean(ArrayList<EmailStatusBean> failedEmail) {
+    EmailResponseBean(ArrayList<EmailStatusBean> failedEmail) {
         this.failedEmail = failedEmail;
     }
 
