@@ -1,30 +1,30 @@
 package com.memory.backend;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Version;
-import org.springframework.data.annotation.CreatedDate;
+import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.Instant;
+import java.util.Date;
 import java.util.UUID;
 
+@MappedSuperclass
 public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    @CreatedDate
-    private Instant insertDate;
-    @LastModifiedDate
-    private Instant updateDate;
+    @CreationTimestamp
+    private Date insertDate;
+    @UpdateTimestamp
+    private Date updateDate;
     @Version
     private Long version;
 
     public BaseEntity() {
     }
 
-    public BaseEntity(UUID id, Instant insertDate, Instant updateDate, Long version) {
+    public BaseEntity(UUID id, Date insertDate, Date updateDate, Long version) {
         this.id = id;
         this.insertDate = insertDate;
         this.updateDate = updateDate;
@@ -35,11 +35,11 @@ public class BaseEntity {
         return id;
     }
 
-    public Instant getInsertDate() {
+    public Date getInsertDate() {
         return insertDate;
     }
 
-    public Instant getUpdateDate() {
+    public Date getUpdateDate() {
         return updateDate;
     }
 

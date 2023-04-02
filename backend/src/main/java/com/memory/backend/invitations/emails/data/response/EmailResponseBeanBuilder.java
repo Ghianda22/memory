@@ -1,6 +1,4 @@
-package com.memory.backend.invitations.emails.data;
-
-import org.hibernate.validator.cfg.defs.EmailDef;
+package com.memory.backend.invitations.emails.data.response;
 
 import java.util.ArrayList;
 

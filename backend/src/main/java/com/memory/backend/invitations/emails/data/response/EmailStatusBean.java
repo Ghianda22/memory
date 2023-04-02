@@ -1,10 +1,10 @@
-package com.memory.backend.invitations.emails.data;
+package com.memory.backend.invitations.emails.data.response;
 
 public final class EmailStatusBean {
     private final String emailAddress;
     private final String statusMessage;
 
-    public EmailStatusBean(String emailAddress, String statusMessage) {
+    EmailStatusBean(String emailAddress, String statusMessage) {
         this.emailAddress = emailAddress;
         this.statusMessage = statusMessage;
     }

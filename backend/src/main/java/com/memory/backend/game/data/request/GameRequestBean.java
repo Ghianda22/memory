@@ -1,15 +1,18 @@
-package com.memory.backend.game.data;
+package com.memory.backend.game.data.request;
+
+import com.memory.backend.game.data.enums.GameBgImage;
+import com.memory.backend.game.data.enums.GameDifficulty;
 
 public final class GameRequestBean {
     private String name;
-    private String bgImage;
-    private String difficulty;
+    private GameBgImage bgImage;
+    private GameDifficulty difficulty;
     private Integer maxNumberOfPlayers;
     private Boolean isPublic;
 
 
     public GameRequestBean() {}
-    public GameRequestBean(String name, String bgImage, String difficulty, Integer maxNumberOfPlayers, Boolean isPublic) {
+    public GameRequestBean(String name, GameBgImage bgImage, GameDifficulty difficulty, Integer maxNumberOfPlayers, Boolean isPublic) {
         this.name = name;
         this.bgImage = bgImage;
         this.difficulty = difficulty;
@@ -21,11 +24,11 @@ public final class GameRequestBean {
         return name;
     }
 
-    public String getBgImage() {
+    public GameBgImage getBgImage() {
         return bgImage;
     }
 
-    public String getDifficulty() {
+    public GameDifficulty getDifficulty() {
         return difficulty;
     }
 
