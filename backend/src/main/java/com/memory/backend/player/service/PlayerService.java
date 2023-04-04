@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -42,24 +43,27 @@ public class PlayerService {
                 .createPlayerEntity();
         UUID adminId = playerRepository.saveAndFlush(player).getId();
         if(adminId != null){
-            gameService.updateGameStatusById(gameId);
+            gameService.updateGameStatusById(gameId, GameStatus.PENDING);
         }
         return adminId;
+    }
+
+    public PlayerEntity getPlayerWithId(UUID playerId){
+        Optional<PlayerEntity> optional = playerRepository.findById(playerId);
+        if(optional.isEmpty()){
+            return null;
+        }
+        return optional.get();
     }
 
     public List<PlayerEntity> getPlayersInGameWithId(UUID gameId) {
         return playerRepository.findAllByGameId(gameId);
     }
 
-    ;
-
-    public void getPlayer() {
-    }
-
-    ;
 
 
-    //    --- DATA CONTROLS -------------------------------------------
+
+    //    --- DATA CHECKS -------------------------------------------
     public Boolean isGameCreated(UUID gameID){
         return gameService.validateGameStatus(gameID, GameStatus.CREATED);
     }
@@ -81,14 +85,6 @@ public class PlayerService {
 
     }
 
-
-
-    public void validatePlayerAction() {
-//        is turn player?
-//        is the game started?
-    }
-
-    ;
 
     public void calculateRankingInGameWithId() {
     }
