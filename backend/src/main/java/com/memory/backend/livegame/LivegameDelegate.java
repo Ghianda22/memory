@@ -35,7 +35,7 @@ public class LivegameDelegate {
         if (!liveGameService.validateStartAction(playerId)) {
             throw new NotAllowedActionException();
         }
-        liveGameService.startGame(playerId);
+        liveGameService.startGameAnyway(playerId);
     }
 
     void turnCard(UUID playerId) {

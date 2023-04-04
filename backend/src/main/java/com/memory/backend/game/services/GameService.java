@@ -65,13 +65,13 @@ public class GameService {
     }
 
     //    --- UPDATE
-    public void updateGameStatusById(UUID gameId) throws NotFoundOnDbException {
+    public void updateGameStatusById(UUID gameId, GameStatus newStatus) throws NotFoundOnDbException {
         Optional<GameEntity> gameEntityOptional = gameRepository.findById(gameId);
         if (gameEntityOptional.isEmpty()){
             throw new NotFoundOnDbException();
         }
 //        TODO: fix this aberrant infraction of the immutability of data
-        gameEntityOptional.get().setStatus(GameStatus.PENDING);
+        gameEntityOptional.get().setStatus(newStatus);
         gameRepository.flush();
         
     }

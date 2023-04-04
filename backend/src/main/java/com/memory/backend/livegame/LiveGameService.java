@@ -19,11 +19,22 @@ public class LiveGameService {
         this.playerService = playerService;
     }
 
-//    --- DB MANAGEMENT ----------------------------------------------------------------------------
-    public void startGame(UUID playerId) throws NotFoundOnDbException {
-        UUID gameId = playerService.getPlayerWithId(playerId).getGameId();
-        gameService.updateGameStatusById(gameId, GameStatus.IN_PROGRESS);
+
+
+
+    public void startGameAnyway(UUID adminId) throws NotFoundOnDbException {
+        startGame(
+                playerService.getPlayerWithId(adminId).getGameId()
+        );
     }
+
+
+//    --- DB MANAGEMENT ----------------------------------------------------------------------------
+    public void startGame(UUID gameId) throws NotFoundOnDbException {
+        gameService.updateGameStatusById(gameId, GameStatus.IN_PROGRESS);
+        changeTurnPlayer();
+    }
+
 
 
 //    --- DATA CHECKS --------------------------------------------------------------
