@@ -21,7 +21,7 @@ export default function StartGame() {
 	const games = fakeGames;
 
 	const joinGame = (game: IGame) => {
-		navigate("/livegame/" + game.gameId);
+		navigate("/livegame/" + game.gameId, {state: {gameId: "prova" + game.gameId}});
 	};
 
 	return (

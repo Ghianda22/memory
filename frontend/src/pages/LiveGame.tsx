@@ -1,49 +1,72 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
+import Stomp, {Client} from "stompjs";
 import SockJS from "sockjs-client";
-import Stomp, { Client } from "stompjs";
+import {useLocation} from "react-router-dom";
+import TextInput from "../components/generics/TextInput";
 
 const wsURL = "http://localhost:8080";
 
 interface MessageReceived {
-	from: string;
-	text: string;
+    from: string;
+    text: string;
 }
 
 let stompClient: Client;
 export default function LiveGame() {
-	const [messages, setMessages] = useState<MessageReceived[]>([]);
+    const [messages, setMessages] = useState<MessageReceived[]>([]);
+    const gameId = useLocation().state.gameId;
+    const [prova, setProva] = useState<String>()
 
-	useEffect(() => {
-		connect();
-	}, []);
+    console.log(gameId);
+    useEffect(() => {
+        connect();
+    }, []);
 
-	function connect() {
-		var socket = new SockJS(wsURL+"/chat");
-		stompClient = Stomp.over(socket);
-		stompClient.connect({}, function (frame) {
-			stompClient.subscribe("/topic/messages", function (messageOutput) {
-				showMessageOutput(JSON.parse(messageOutput.body));
-			});
-		});
-	}
+    console.log([...messages]);
+    function connect() {
+        let socket = new SockJS(`${wsURL}/actions`);
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, onConnected);
+    }
+    const onConnected = () => {
+        stompClient.subscribe(`/livegame/${gameId}`, function (messageOutput) {
+            showMessageOutput(JSON.parse(messageOutput.body));
+        });
+    }
+    function sendMessage() {
+        stompClient.send(
+            `/game/actions`,
+            {},
+            JSON.stringify({
+                from: gameId,
+                text: "Ciao, io sono " + prova
+            })
+        );
+    }
+    function showMessageOutput(messageOutput: MessageReceived) {
 
-	function sendMessage() {
-		stompClient.send(
-			"/app/chat",
-			{},
-			JSON.stringify({ from: "from", text: "testo di prova" })
-		);
-	}
+        setMessages([...messages, messageOutput]);
+        console.log(messageOutput);
+    }
 
-	function showMessageOutput(messageOutput: MessageReceived) {
-		console.log("Questo è il messaggio " + messageOutput);
-    
-  }
+    function handleChange(name: string, value: string) {
+        setProva(value);
+    }
 
-	return (
-		<div>
-			LiveGame
-			<button onClick={sendMessage}>Send message</button>
-		</div>
-	);
+    const mappedMessages = messages.map(msg => {
+        return <div>
+            <p><b>{msg.from}</b></p>
+            <p>{msg.text}</p>
+        </div>
+    })
+
+
+    return (
+        <div>
+            LiveGame
+            <div>{mappedMessages}</div>
+            <TextInput image={""} placeholder={"nome utente"} fieldName={"prova"} handleOnChange={handleChange}/>
+            <button onClick={sendMessage}>Send message</button>
+        </div>
+    );
 }
