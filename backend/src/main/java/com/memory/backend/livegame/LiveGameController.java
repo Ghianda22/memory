@@ -1,6 +1,7 @@
 package com.memory.backend.livegame;
 
 import com.memory.backend.livegame.data.request.IncomingEvent;
+import com.memory.backend.livegame.data.response.OutcomingEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -19,10 +20,12 @@ public class LiveGameController {
     }
 
     @MessageMapping("/actions") //channel between player-server
-    public void send(IncomingEvent event){
+    public void receive(IncomingEvent event){
         System.out.println(event);
         livegameDelegate.handleEvent(event);
-//        simpMessagingTemplate.convertAndSend("/livegame/" + message.getFrom(), message);
+    }
 
+    public void send(OutcomingEvent event){
+        simpMessagingTemplate.convertAndSend("/livegame/" + event.getGameId(), event);
     }
 }

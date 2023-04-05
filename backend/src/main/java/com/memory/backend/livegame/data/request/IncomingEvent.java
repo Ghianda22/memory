@@ -4,10 +4,10 @@ import com.memory.backend.livegame.data.enums.ClientEvent;
 
 import java.util.UUID;
 
-public class IncomingEvent {
-    private ClientEvent event;
-    private UUID playerId;
-    private UUID cardId;
+public final class IncomingEvent {
+    private final ClientEvent event;
+    private final UUID playerId;
+    private final UUID cardId;
 
     IncomingEvent(ClientEvent event, UUID playerId, UUID cardId) {
         this.event = event;
