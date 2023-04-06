@@ -44,7 +44,7 @@ export default function SendInvitationsTemplate() {
 			</div>
 			<Button
 				type="submit"
-				buttonStyle={"normal"}
+				buttonStyle="normal"
 				text={sendInvitations.pageData.button}
 				onClickHandler={next}
 			/>
