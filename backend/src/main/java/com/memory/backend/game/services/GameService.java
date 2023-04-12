@@ -1,6 +1,7 @@
 package com.memory.backend.game.services;
 
 import com.memory.backend.exceptions.NotFoundOnDbException;
+import com.memory.backend.game.data.enums.GameDifficulty;
 import com.memory.backend.game.data.persistence.GameEntityBuilder;
 import com.memory.backend.game.data.persistence.GameRepository;
 import com.memory.backend.game.data.persistence.GameEntity;
@@ -52,6 +53,14 @@ public class GameService {
         return gameEntityOptional.get().getStatus();
     }
 
+    public GameDifficulty getGameDifficultyById(UUID gameId) {
+        Optional<GameEntity> gameEntityOptional = gameRepository.findById(gameId);
+        if (gameEntityOptional.isEmpty()) {
+            return null;
+        }
+        return gameEntityOptional.get().getDifficulty();
+    }
+
     public Integer getGameMaxNumberOfPlayers(UUID gameId) {
         Optional<GameEntity> gameEntityOptional = gameRepository.findById(gameId);
         if (gameEntityOptional.isEmpty()) {
@@ -65,15 +74,15 @@ public class GameService {
     }
 
     //    --- UPDATE
-    public void updateGameStatusById(UUID gameId, GameStatus newStatus) throws NotFoundOnDbException {
+    public void updateGameStatusById(UUID gameId, GameStatus newStatus) {
         Optional<GameEntity> gameEntityOptional = gameRepository.findById(gameId);
-        if (gameEntityOptional.isEmpty()){
-            throw new NotFoundOnDbException();
-        }
+        if (gameEntityOptional.isPresent()) {
 //        TODO: fix this aberrant infraction of the immutability of data
-        gameEntityOptional.get().setStatus(newStatus);
-        gameRepository.flush();
-        
+            gameEntityOptional.get().setStatus(newStatus);
+            gameRepository.flush();
+        }
+
+
     }
 
 }

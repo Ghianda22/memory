@@ -8,7 +8,7 @@ public class PlayerEntityBuilder {
     private UUID gameId;
     private Icons avatar = Icons.getRandomIcon();
     private Integer score = 0;
-    private Boolean isInGame = true;
+    private Boolean isInGame = true; //is false only if the player quit
     private Boolean isTurnPlayer;
     private Boolean isAdmin = false;
 

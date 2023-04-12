@@ -8,5 +8,6 @@ import java.util.UUID;
 
 @Repository
 public interface PlayerRepository extends JpaRepository<PlayerEntity, UUID> {
-    List<PlayerEntity> findAllByGameId(UUID gameId);
+    List<PlayerEntity> findAllByGameIdOrderById(UUID gameId);
+    List<PlayerEntity> findAllByGameIdAndIsInGameTrueOrderById(UUID gameId);
 }

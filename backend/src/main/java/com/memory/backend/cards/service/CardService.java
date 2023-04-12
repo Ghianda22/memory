@@ -5,6 +5,7 @@ import com.memory.backend.cards.data.persistence.CardEntity;
 import com.memory.backend.cards.data.persistence.CardEntityBuilder;
 import com.memory.backend.cards.data.persistence.CardRepository;
 import com.memory.backend.game.data.enums.GameDifficulty;
+import com.memory.backend.game.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,14 +14,17 @@ import java.util.*;
 @Service
 public class CardService {
 
-    private CardRepository cardRepository;
+    private final CardRepository cardRepository;
+    private final GameService gameService;
 
     @Autowired
-    public CardService(CardRepository cardRepository) {
+    public CardService(CardRepository cardRepository, GameService gameService) {
         this.cardRepository = cardRepository;
+        this.gameService = gameService;
     }
 
-    public void createDeckForGame(UUID gameId, GameDifficulty difficulty){
+    public void createDeckForGame(UUID gameId){
+        GameDifficulty difficulty = gameService.getGameDifficultyById(gameId);
         Integer cardNumber = 0;
         List<Icons> deck = new ArrayList<>();
         switch(difficulty){
