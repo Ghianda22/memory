@@ -52,6 +52,7 @@ const LayoutContainerY = styled(LayoutContainerX)`
 	justify-content: space-between;
 	gap: 5px;
 	height: 90%;
+	padding: 0 20% 0 20%;
 `;
 //TODO: set a responsive width
 const ImageContainerY = styled(ImageContainerX)`
